@@ -10,15 +10,26 @@
 
 <body onload="renderQuestions()">
 
+    <!-- <div class="start_quiz_div">
+        <input type="text" placeholder="Enter your name" />
+        <br>
+        <button onclick="renderQuiz()">Start quiz</button>
+    </div> -->
 
-    <div id="questions">
 
-        <input type="radio" id="option1"><span id="option1Name"></span><br>
-        <input type="radio" id="option2"><span id="option2Name"></span><br>
-        <input type="radio" id="option3"><span id="option3Name"></span><br>
-        <input type="radio" id="option4"><span id="option4Name"></span><br>
+
+
+    <div id="questions_div">
+        <h2 id="question"></h2>
+        <input name="selectBtn" type="radio" class="options"><span class="optionsName"></span><br>
+        <input name="selectBtn" type="radio" class="options"><span class="optionsName"></span><br>
+        <input name="selectBtn" type="radio" class="options"><span class="optionsName"></span><br>
+
+        <br>
+        <br>
+        <button onclick="nextQuestion()">Next</button>
+
     </div>
-    <!-- <h2 id="question"></h2>-->
 
 
     <script src="app.js"></script>

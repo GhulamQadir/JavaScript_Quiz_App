@@ -1,60 +1,63 @@
 var questions = [
     {
         question: "Full Form of CPU",
-        options: {
-            a: "Central Processing unit",
-            b: "Central Processing unit",
-            c: "Central Processing unit"
-        },
-        correctAnswer: "a"
+        options: [
+            "Central Processing unit",
+            "Central Programming unit",
+            "Central Processing unit"
+        ],
+        correctAnswer: "Central Processing Unit"
 
     },
-    {
-        question: "Full Form of CPU",
-        options: {
-            a: "Central Processing unit",
-            b: "Create Processing unit",
-            c: "Central Password unit",
-            d: "Hello Processing unit"
-        },
-        correctAnswer: "a"
+    // {
+    //     question: "Full Form of CPU",
+    //     options: {
+    //         a: "Central Processing unit",
+    //         b: "Create Processing unit",
+    //         c: "Central Password unit",
+    //         d: "Hello Processing unit"
+    //     },
+    //     correctAnswer: "a"
 
-    }
+    // }
 ]
 
+
+
+
 function renderQuestions() {
-    var question = document.getElementById('questions')
-    for (var i = 0; i < questions.length; i++) {
-        var questionName = document.createElement('h2')
-        var questionText = document.createTextNode(questions[i].question)
-        questionName.appendChild(questionText);
-        question.appendChild(questionName)
 
-        var option1 = document.getElementById('option1')
-        var option2 = document.getElementById('option2')
-        var option3 = document.getElementById('option3')
-        var option4 = document.getElementById('option4')
+    var questionName = document.getElementById('question')
+    questionName.innerHTML = questions[0].question
 
-        var option1Name = document.getElementById('option1Name')
-        var option2Name = document.getElementById('option2Name')
-        var option3Name = document.getElementById('option3Name')
-        var option4Name = document.getElementById('option4Name')
-
-        option1Name.innerHTML = questions[i].options.a
-        option2Name.innerHTML = questions[i].options.b
-        option3Name.innerHTML = questions[i].options.c
-        option4.innerHTML = questions[i].options.d
-
-
-        option1.value = questions[i].options.a
-        option2.value = questions[i].options.b
-        option3.value = questions[i].options.c
-        option4.value = questions[i].options.d
-
-
-        // var options = document.createElement('input')
-        // options.setAttribute('type', 'radio');
-        // options.createTextNode(questions[i].options[i])
-        // options.appendChild(question)
+    var optionss = document.getElementsByClassName('options')
+    var optionsNames = document.getElementsByClassName('optionsName')
+    for (var i = 0; i < optionss.length; i++) {
+        optionss[i].value = questions[0].options[i]
+        optionsNames[i].innerHTML = questions[0].options[i]
     }
+
+    // for (var i = 0; i < questions.length; i++) {
+    //     questionName.innerHTML = questions[i].question
+
+    //     var optionss = document.getElementsByClassName('options')
+    //     optionss.value = questions[i].options
+    //     console.log(optionss.value)
+    //     var optionsNames = document.getElementsByClassName('optionsName')
+    //     optionsNames.innerHTML = questions[i].options
+    // }
+}
+
+
+function nextQuestion() {
+    var selectOption = document.getElementsByName('selectBtn')
+    for (var i = 0; i < selectOption.length; i++) {
+        if (selectOption[i].checked) {
+            console.log(selectOption[i].value)
+            selectOption[i].checked = false
+            return true;
+        }
+    }
+    alert("Please select any 1 option")
+    return false
 }
