@@ -4,7 +4,7 @@ var questions = [
         options: [
             "Central Processing unit",
             "Central Programming unit",
-            "Central Processing unit"
+            "Central Private unit"
         ],
         correctAnswer: "Central Processing Unit"
 
@@ -32,6 +32,7 @@ var questions = [
 ]
 
 var score = 0
+var answer = ""
 
 
 function renderQuestion(e) {
@@ -140,33 +141,49 @@ function nextQuestion() {
     var selectOption = document.getElementsByName('selectBtn')
 
 
+
+
+
     for (var i = 0; i < selectOption.length; i++) {
         if (selectOption[i].checked) {
+
             if (questionCount === questions.length - 1) {
+                answer = selectOption[i].value
+                checkAnswer(questionCount, answer)
                 console.log(selectOption[i].value)
                 questions_div.display = 'none'
+
                 alert("completed")
-                questions_div.innerHTML = "Completed"
+                questions_div.innerHTML = `Completed <br>You got ${score} out of ${questions.length}`
+
                 return;
             }
 
 
             else {
-
-
+                answer = selectOption[i].value
                 console.log(selectOption[i].value)
                 selectOption[i].checked = false
                 questions_div.innerHTML = ""
-
+                checkAnswer(questionCount, answer)
                 questionCount++;
                 renderQuestion(questionCount)
                 return true;
             }
 
         }
+
+
     }
 
 
     alert("Please select any 1 option")
     return false
+}
+
+function checkAnswer(index, answer) {
+    if (questions[index].correctAnswer === answer) {
+        score++;
+        console.log(score)
+    }
 }
