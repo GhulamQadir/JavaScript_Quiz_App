@@ -138,6 +138,7 @@ function hello() {
 var questionCount = 0;
 function nextQuestion() {
     var questions_div = document.getElementById('questions_div')
+    var result_div = document.getElementById('result')
     var selectOption = document.getElementsByName('selectBtn')
 
 
@@ -148,10 +149,12 @@ function nextQuestion() {
                 answer = selectOption[i].value
                 console.log(selectOption[i].value)
                 checkAnswer(questionCount, answer)
-                questions_div.display = 'none'
+                questions_div.innerHTML = ""
+
 
                 alert("completed")
-                questions_div.innerHTML = `Completed <br>You got ${score} out of ${questions.length}`
+                result()
+                // result_div.innerHTML = `Completed <br>You got ${score} out of ${questions.length}`
 
                 return;
             }
@@ -183,4 +186,24 @@ function checkAnswer(index, answer) {
         score++;
         console.log(score)
     }
+}
+
+function result() {
+    var result_div = document.getElementById('result')
+
+    var completeHeading = document.createElement('h2')
+    var completeHeadingText = document.createTextNode("Completed!")
+    completeHeading.appendChild(completeHeadingText)
+
+    var result = document.createElement('h2')
+    var resultText = document.createTextNode(`You got ${score} out of ${questions.length}`)
+    result.appendChild(resultText)
+
+
+    result_div.appendChild(completeHeading)
+    result_div.appendChild(result)
+
+
+    
+
 }
