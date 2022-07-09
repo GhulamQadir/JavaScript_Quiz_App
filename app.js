@@ -138,7 +138,6 @@ function hello() {
 var questionCount = 0;
 function nextQuestion() {
     var questions_div = document.getElementById('questions_div')
-    var result_div = document.getElementById('result')
     var selectOption = document.getElementsByName('selectBtn')
 
 
@@ -153,8 +152,7 @@ function nextQuestion() {
 
 
                 alert("completed")
-                result()
-                // result_div.innerHTML = `Completed <br>You got ${score} out of ${questions.length}`
+                result();
 
                 return;
             }
@@ -204,6 +202,65 @@ function result() {
     result_div.appendChild(result)
 
 
-    
+    // questions checking
+    for (var i = 0; i < questions.length; i++) {
+        var question = document.createElement('p')
+        var questionText = document.createTextNode(questions[i].question)
+        question.appendChild(questionText)
+        result_div.appendChild(question)
+
+
+
+        var radioBtn1 = document.createElement('input')
+        radioBtn1.setAttribute('type', 'radio')
+        radioBtn1.setAttribute('name', 'selectBtn')
+        radioBtn1.setAttribute('class', 'options')
+        radioBtn1.setAttribute('value', questions[i].options[0])
+        var option1 = document.createElement('span')
+        var option1Name = document.createTextNode(questions[i].options[0])
+        option1.appendChild(option1Name)
+        option1.setAttribute('class', 'optionsName')
+        result_div.appendChild(radioBtn1)
+        result_div.appendChild(option1)
+
+
+        var breakLine1 = document.createElement('br')
+        result_div.appendChild(breakLine1)
+
+
+        var radioBtn2 = document.createElement('input')
+        radioBtn2.setAttribute('type', 'radio')
+        radioBtn2.setAttribute('name', 'selectBtn')
+        radioBtn2.setAttribute('class', 'options')
+        radioBtn2.setAttribute('value', questions[i].options[1])
+        var option2 = document.createElement('span')
+        var option2Name = document.createTextNode(questions[i].options[1])
+        option2.appendChild(option2Name)
+        option2.setAttribute('class', 'optionsName')
+        result_div.appendChild(radioBtn2)
+        result_div.appendChild(option2)
+
+        var breakLine2 = document.createElement('br')
+        result_div.appendChild(breakLine2)
+
+
+        var radioBtn3 = document.createElement('input')
+        radioBtn3.setAttribute('type', 'radio')
+        radioBtn3.setAttribute('name', 'selectBtn')
+        radioBtn3.setAttribute('class', 'options')
+        radioBtn3.setAttribute('value', questions[i].options[2])
+        var option3 = document.createElement('span')
+        var option3Name = document.createTextNode(questions[i].options[2])
+        option3.appendChild(option3Name)
+        option3.setAttribute('class', 'optionsName')
+
+        result_div.appendChild(radioBtn3)
+        result_div.appendChild(option3)
+
+        var breakLine3 = document.createElement('br')
+        result_div.appendChild(breakLine3)
+
+
+    }
 
 }
