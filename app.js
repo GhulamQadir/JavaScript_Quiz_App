@@ -31,10 +31,17 @@ var questions = [
     },
 ]
 
+var score = 0
+
 
 function renderQuestion(e) {
+    var getName = document.getElementById('name_field')
+    if (getName.value === "") {
+        alert("Please enter your name")
+        return false;
+    }
     var starting = document.getElementById('starting')
-    starting.innerHTML = ""
+    starting.style.display = 'none'
 
     var questions_div = document.getElementById('questions_div')
     var question = document.createElement('h2')
@@ -104,6 +111,7 @@ function hello() {
         var a = document.createElement("input")
         a.setAttribute('type', 'text')
         a.setAttribute('placeholder', 'Enter your name')
+        a.setAttribute('id', 'name_field')
 
 
         var breakLine = document.createElement('br')
@@ -118,9 +126,6 @@ function hello() {
         starting.appendChild(a)
         starting.appendChild(breakLine)
         starting.appendChild(btn)
-
-        // var a = document.getElementById('questions_div')
-        // a.style.display = 'none'
 
     } catch (error) {
         console.log(error)
@@ -137,14 +142,18 @@ function nextQuestion() {
 
     for (var i = 0; i < selectOption.length; i++) {
         if (selectOption[i].checked) {
-
             if (questionCount === questions.length - 1) {
                 console.log(selectOption[i].value)
+                questions_div.display = 'none'
                 alert("completed")
                 questions_div.innerHTML = "Completed"
                 return;
             }
+
+
             else {
+
+
                 console.log(selectOption[i].value)
                 selectOption[i].checked = false
                 questions_div.innerHTML = ""
@@ -156,6 +165,7 @@ function nextQuestion() {
 
         }
     }
+
 
     alert("Please select any 1 option")
     return false
