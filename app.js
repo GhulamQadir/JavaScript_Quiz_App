@@ -2,9 +2,9 @@ var questions = [
     {
         question: "Full Form of CPU",
         options: [
-            "Central Processing unit",
-            "Central Programming unit",
-            "Central Private unit"
+            "Central Processing Unit",
+            "Central Programming Unit",
+            "Central Private Unit"
         ],
         correctAnswer: "Central Processing Unit"
 
@@ -141,16 +141,13 @@ function nextQuestion() {
     var selectOption = document.getElementsByName('selectBtn')
 
 
-
-
-
     for (var i = 0; i < selectOption.length; i++) {
         if (selectOption[i].checked) {
 
             if (questionCount === questions.length - 1) {
                 answer = selectOption[i].value
-                checkAnswer(questionCount, answer)
                 console.log(selectOption[i].value)
+                checkAnswer(questionCount, answer)
                 questions_div.display = 'none'
 
                 alert("completed")
