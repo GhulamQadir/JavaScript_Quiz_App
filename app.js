@@ -33,6 +33,7 @@ var questions = [
 
 var score = 0
 var answer = ""
+var usersSelectedAnswers = []
 
 
 function renderQuestion(e) {
@@ -146,6 +147,7 @@ function nextQuestion() {
 
             if (questionCount === questions.length - 1) {
                 answer = selectOption[i].value
+                usersSelectedAnswers.push(selectOption[i].value)
                 console.log(selectOption[i].value)
                 checkAnswer(questionCount, answer)
                 questions_div.innerHTML = ""
@@ -160,6 +162,7 @@ function nextQuestion() {
 
             else {
                 answer = selectOption[i].value
+                usersSelectedAnswers.push(selectOption[i].value)
                 console.log(selectOption[i].value)
                 selectOption[i].checked = false
                 questions_div.innerHTML = ""
@@ -261,6 +264,19 @@ function result() {
         result_div.appendChild(breakLine3)
 
 
+        usersAnswers()
+        // console.log(usersSelectedAnswers)
     }
 
+}
+
+
+
+function usersAnswers() {
+    var selectOption = document.getElementsByName('selectBtn')
+
+    for (var i = 0; i < selectOption.length; i++) {
+        console.log(selectOption[i].value)
+
+    }
 }
