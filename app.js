@@ -265,7 +265,6 @@ function result() {
 
 
         usersAnswers()
-        // console.log(usersSelectedAnswers)
     }
 
 }
@@ -274,18 +273,14 @@ function result() {
 
 function usersAnswers() {
     var options = document.getElementsByClassName('options')
-    var getInput = document.getElementsByTagName('input')
-    // options.checked = true
 
     for (var i = 0; i < options.length; i++) {
-        getInput[i].disabled = true
+        options[i].disabled = true
         for (var j = 0; j < usersSelectedAnswers.length; j++) {
             if (options[i].value === usersSelectedAnswers[j]) {
-                // getInput[i].disabled = true
                 options[i].checked = true
                 options[i].disabled = true
             }
         }
     }
-
 }
