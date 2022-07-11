@@ -279,6 +279,7 @@ function usersAnswers() {
         for (var j = 0; j < usersSelectedAnswers.length; j++) {
             if (options[i].value === usersSelectedAnswers[j]) {
                 options[i].checked = true
+                usersSelectedAnswers.splice(i, 1);
                 options[i].disabled = true
             }
         }
