@@ -14,7 +14,7 @@ var questions = [
         options: [
             "Random Access Memory",
             "Read Access Memory",
-            "Central Processing unit"
+            "Central Processing Unit",
         ],
         correctAnswer: "Random Access Memory"
 
@@ -24,7 +24,7 @@ var questions = [
         options: [
             "Read Only Memory",
             "Read Access Memory",
-            "Central Processing unit"
+            "Central Processing Unit",
         ],
         correctAnswer: "Read Only Memory"
 
@@ -215,7 +215,7 @@ function result() {
 
 
         var radioBtn1 = document.createElement('input')
-        radioBtn1.setAttribute('type', 'radio')
+        radioBtn1.setAttribute('type', 'checkbox')
         radioBtn1.setAttribute('name', 'selectBtn')
         radioBtn1.setAttribute('class', 'options')
         radioBtn1.setAttribute('value', questions[i].options[0])
@@ -232,7 +232,7 @@ function result() {
 
 
         var radioBtn2 = document.createElement('input')
-        radioBtn2.setAttribute('type', 'radio')
+        radioBtn2.setAttribute('type', 'checkbox')
         radioBtn2.setAttribute('name', 'selectBtn')
         radioBtn2.setAttribute('class', 'options')
         radioBtn2.setAttribute('value', questions[i].options[1])
@@ -248,7 +248,7 @@ function result() {
 
 
         var radioBtn3 = document.createElement('input')
-        radioBtn3.setAttribute('type', 'radio')
+        radioBtn3.setAttribute('type', 'checkbox')
         radioBtn3.setAttribute('name', 'selectBtn')
         radioBtn3.setAttribute('class', 'options')
         radioBtn3.setAttribute('value', questions[i].options[2])
@@ -273,10 +273,19 @@ function result() {
 
 
 function usersAnswers() {
-    var selectOption = document.getElementsByName('selectBtn')
+    var options = document.getElementsByClassName('options')
+    var getInput = document.getElementsByTagName('input')
+    // options.checked = true
 
-    for (var i = 0; i < selectOption.length; i++) {
-        console.log(selectOption[i].value)
-
+    for (var i = 0; i < options.length; i++) {
+        getInput[i].disabled = true
+        for (var j = 0; j < usersSelectedAnswers.length; j++) {
+            if (options[i].value === usersSelectedAnswers[j]) {
+                // getInput[i].disabled = true
+                options[i].checked = true
+                options[i].disabled = true
+            }
+        }
     }
+
 }
