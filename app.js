@@ -33,6 +33,7 @@ var questions = [
 
 var score = 0
 var answer = ""
+var userName = ""
 var usersSelectedAnswers = []
 
 
@@ -42,6 +43,7 @@ function renderQuestion(e) {
         alert("Please enter your name")
         return false;
     }
+    userName = getName.value
     var starting = document.getElementById('starting')
     starting.style.display = 'none'
 
@@ -197,7 +199,7 @@ function result() {
     completeHeading.appendChild(completeHeadingText)
 
     var result = document.createElement('h2')
-    var resultText = document.createTextNode(`You got ${score} out of ${questions.length}`)
+    var resultText = document.createTextNode(`${userName}, You got ${score} out of ${questions.length}`)
     result.appendChild(resultText)
 
 
@@ -264,6 +266,16 @@ function result() {
         result_div.appendChild(breakLine3)
 
 
+        var correctAnswer = document.createElement('h3')
+        var correctAnswerText = document.createTextNode(`Correct answer: ${questions[i].correctAnswer}`)
+        correctAnswer.appendChild(correctAnswerText)
+        result_div.appendChild(correctAnswer)
+
+        var breakLine4 = document.createElement('br')
+        result_div.appendChild(breakLine4)
+
+
+
         usersAnswers()
     }
 
@@ -279,8 +291,8 @@ function usersAnswers() {
         for (var j = 0; j < usersSelectedAnswers.length; j++) {
             if (options[i].value === usersSelectedAnswers[j]) {
                 options[i].checked = true
-                usersSelectedAnswers.splice(i, 1);
-                options[i].disabled = true
+                usersSelectedAnswers.splice(j, 1);
+                console.log(usersSelectedAnswers)
             }
         }
     }
