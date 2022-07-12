@@ -35,6 +35,7 @@ var score = 0
 var answer = ""
 var userName = ""
 var usersSelectedAnswers = []
+var questionsDiv = document.getElementById('questions_div')
 
 
 function renderQuestion(e) {
@@ -122,7 +123,7 @@ function hello() {
 
         var btn = document.createElement('button')
         var btnText = document.createTextNode("Start quiz")
-        btn.setAttribute('onclick', 'renderQuestion(0)')
+        btn.setAttribute('onclick', 'renderQuestion(0), time()')
 
         btn.appendChild(btnText)
 
@@ -192,6 +193,7 @@ function checkAnswer(index, answer) {
 }
 
 function result() {
+    clearInterval(interval)
     var result_div = document.getElementById('result')
 
     var completeHeading = document.createElement('h2')
@@ -224,7 +226,7 @@ function result() {
         var option1 = document.createElement('span')
         var option1Name = document.createTextNode(questions[i].options[0])
         option1.appendChild(option1Name)
-        option1.setAttribute('class', 'optionsName')
+        option1.setAttribute('class', 'optionsNameResult')
         result_div.appendChild(radioBtn1)
         result_div.appendChild(option1)
 
@@ -241,7 +243,7 @@ function result() {
         var option2 = document.createElement('span')
         var option2Name = document.createTextNode(questions[i].options[1])
         option2.appendChild(option2Name)
-        option2.setAttribute('class', 'optionsName')
+        option2.setAttribute('class', 'optionsNameResult')
         result_div.appendChild(radioBtn2)
         result_div.appendChild(option2)
 
@@ -257,7 +259,7 @@ function result() {
         var option3 = document.createElement('span')
         var option3Name = document.createTextNode(questions[i].options[2])
         option3.appendChild(option3Name)
-        option3.setAttribute('class', 'optionsName')
+        option3.setAttribute('class', 'optionsNameResult')
 
         result_div.appendChild(radioBtn3)
         result_div.appendChild(option3)
@@ -285,7 +287,6 @@ function result() {
 
 function usersAnswers() {
     var options = document.getElementsByClassName('options')
-
     for (var i = 0; i < options.length; i++) {
         options[i].disabled = true
         for (var j = 0; j < usersSelectedAnswers.length; j++) {
@@ -293,7 +294,112 @@ function usersAnswers() {
                 options[i].checked = true
                 usersSelectedAnswers.splice(j, 1);
                 console.log(usersSelectedAnswers)
+
             }
         }
     }
+
+    // var optionsName = document.querySelectorAll('.optionsNameResult').forEach(function (optionsName) {
+    //     optionsName.className += ' hehe'
+
+    // })
+    // correctAnswers()
 }
+
+
+// function correctAnswers() {
+//     var optionsName = document.getElementsByClassName('optionsNameResult')
+//     var options = document.getElementsByClassName('options').value
+//     for (var i = 0; i < questions.length; i++) {
+//         for (var j = 0; j < options.length; j++) {
+//             for (var k = 0; k < optionsName.length; k++) {
+//                 // if (optionsName[j].innerHTML === questions[i].correctAnswer) {
+//                 //     optionsName[j].className += ' hehe'
+//                 //     if (optionsName[j].innerHTML != questions[i].correctAnswer) {
+//                 //         optionsName[j].className += ' haha'
+//                 //     }
+
+//                 // }
+//                 if (options[j] === questions[i].correctAnswer) {
+//                     optionsName[k].className += ' hehe'
+
+//                 }
+//             }
+
+//         }
+//     }
+// }
+
+
+var minutes = 2;
+var seconds = 60;
+
+function time() {
+    var timeDiv = document.getElementById('time')
+
+    // minutes
+    var minutes = document.createElement('span')
+    minutes.setAttribute('id', 'minutes')
+    var minutesText = document.createTextNode('2:')
+    minutes.appendChild(minutesText)
+    timeDiv.appendChild(minutes)
+
+
+    // seconds
+    var seconds = document.createElement('span')
+    seconds.setAttribute('id', 'seconds')
+    var secondsText = document.createTextNode('00')
+    seconds.appendChild(secondsText)
+    timeDiv.appendChild(seconds)
+    startTimer()
+}
+
+
+var interval = ""
+function timer() {
+
+    var getMinutes = document.getElementById('minutes')
+    var getSeconds = document.getElementById('seconds')
+
+    seconds--
+    // minutes--
+    getSeconds.innerHTML = seconds;
+    // getMinutes.innerHTML = minutes;
+
+    if (seconds === 50) {
+        minutes--
+        getMinutes.innerHTML = minutes
+
+        seconds = 60
+        getSeconds.innerHTML = seconds
+
+    }
+    if (minutes === 0) {
+        clearInterval(interval)
+        getMinutes.innerHTML = "00:"
+        getSeconds.innerHTML = "00"
+        questionsDiv.innerHTML = ""
+
+        alert("Time's Up")
+        result()
+    }
+
+}
+function startTimer() {
+    interval = setInterval(timer, 1000)
+
+}
+// var count = 0;
+// var interval;
+// function timer() {
+//     count++;
+//     console.log(count);
+// }
+// interval = setInterval(timer, 1000)
+
+
+// setTimeout(function () {
+//     clearInterval(interval)
+//     console.log("Times up !")
+// }, 5000)
+
