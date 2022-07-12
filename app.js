@@ -336,22 +336,27 @@ var seconds = 60;
 
 function time() {
     var timeDiv = document.getElementById('time')
+    if (userName === "") {
+        timeDiv.innerHTML = ""
+    }
+    else if (userName != "") {
+        // minutes
+        var minutes = document.createElement('span')
+        minutes.setAttribute('id', 'minutes')
+        var minutesText = document.createTextNode('2:')
+        minutes.appendChild(minutesText)
+        timeDiv.appendChild(minutes)
 
-    // minutes
-    var minutes = document.createElement('span')
-    minutes.setAttribute('id', 'minutes')
-    var minutesText = document.createTextNode('2:')
-    minutes.appendChild(minutesText)
-    timeDiv.appendChild(minutes)
 
+        // seconds
+        var seconds = document.createElement('span')
+        seconds.setAttribute('id', 'seconds')
+        var secondsText = document.createTextNode('00')
+        seconds.appendChild(secondsText)
+        timeDiv.appendChild(seconds)
+        startTimer()
+    }
 
-    // seconds
-    var seconds = document.createElement('span')
-    seconds.setAttribute('id', 'seconds')
-    var secondsText = document.createTextNode('00')
-    seconds.appendChild(secondsText)
-    timeDiv.appendChild(seconds)
-    startTimer()
 }
 
 
@@ -362,17 +367,20 @@ function timer() {
     var getSeconds = document.getElementById('seconds')
 
     seconds--
-    // minutes--
     getSeconds.innerHTML = seconds;
-    // getMinutes.innerHTML = minutes;
-
-    if (seconds === 50) {
+    if (seconds === 60) {
+        getSeconds.innerHTML = "00"
+    }
+    if (seconds === 0) {
         minutes--
-        getMinutes.innerHTML = minutes
-
+        getMinutes.innerHTML = `${minutes}:`
         seconds = 60
-        getSeconds.innerHTML = seconds
-
+        if (seconds === 60) {
+            getSeconds.innerHTML = "00"
+        }
+    }
+    if (seconds < 10 && seconds > 0) {
+        getSeconds.innerHTML = `0${seconds}`
     }
     if (minutes === 0) {
         clearInterval(interval)
@@ -389,17 +397,3 @@ function startTimer() {
     interval = setInterval(timer, 1000)
 
 }
-// var count = 0;
-// var interval;
-// function timer() {
-//     count++;
-//     console.log(count);
-// }
-// interval = setInterval(timer, 1000)
-
-
-// setTimeout(function () {
-//     clearInterval(interval)
-//     console.log("Times up !")
-// }, 5000)
-
