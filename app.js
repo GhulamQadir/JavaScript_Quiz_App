@@ -331,7 +331,7 @@ function usersAnswers() {
 // }
 
 
-var minutes = 2;
+var minutes = 1;
 var seconds = 60;
 
 function time() {
@@ -368,9 +368,25 @@ function timer() {
 
     seconds--
     getSeconds.innerHTML = seconds;
-    if (seconds === 60) {
+    // minutes = 1
+    getMinutes.innerHTML = `${minutes}:`
+
+    if (minutes === 0) {
+        if (minutes === 0 && seconds === 0) {
+            minutes++
+            getMinutes.innerHTML = "00:"
+            clearInterval(interval)
+            questionsDiv.innerHTML = ""
+
+            // alert("Time's Up")
+            result()
+        }
+    }
+    if (minutes > 0 && seconds === 60) {
         getSeconds.innerHTML = "00"
     }
+
+
     if (seconds === 0) {
         minutes--
         getMinutes.innerHTML = `${minutes}:`
@@ -379,20 +395,15 @@ function timer() {
             getSeconds.innerHTML = "00"
         }
     }
-    if (seconds < 10 && seconds > 0) {
+    if (seconds < 10) {
         getSeconds.innerHTML = `0${seconds}`
     }
-    if (minutes === 0) {
-        clearInterval(interval)
-        getMinutes.innerHTML = "00:"
-        getSeconds.innerHTML = "00"
-        questionsDiv.innerHTML = ""
 
-        alert("Time's Up")
-        result()
-    }
+
 
 }
+
+
 function startTimer() {
     interval = setInterval(timer, 1000)
 
