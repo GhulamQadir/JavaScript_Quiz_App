@@ -9,7 +9,6 @@ var questions = [
             "javascript"
         ],
         correctAnswer: "<script>"
-
     },
 
     {
@@ -21,7 +20,6 @@ var questions = [
             "if i == 5 then"
         ],
         correctAnswer: "if(i==5)"
-
     },
 
     {
@@ -32,7 +30,6 @@ var questions = [
 
         ],
         correctAnswer: "False"
-
     },
 
     {
@@ -44,7 +41,6 @@ var questions = [
             "if i <> 5"
         ],
         correctAnswer: "if(i != 5)"
-
     },
 
     {
@@ -56,7 +52,6 @@ var questions = [
             "for(i = 0; i<=10)"
         ],
         correctAnswer: "for(i=0; i<=10; i++)"
-
     },
 
     {
@@ -64,10 +59,8 @@ var questions = [
         options: [
             "true",
             "false",
-
         ],
         correctAnswer: "true"
-
     },
 
     {
@@ -79,7 +72,6 @@ var questions = [
             "="
         ],
         correctAnswer: '='
-
     },
 
 
@@ -92,7 +84,6 @@ var questions = [
             'var colors  = ["red", "green", "blue", "orange"]'
         ],
         correctAnswer: 'var colors  = ["red", "green", "blue", "orange"]'
-
     },
 
     {
@@ -104,7 +95,6 @@ var questions = [
             "!* This is a comment*!"
         ],
         correctAnswer: "// This is a comment"
-
     },
 
     {
@@ -156,6 +146,26 @@ var questions = [
     },
 
     {
+        question: "JavaScript ignores extra spaces",
+        options: [
+            "True",
+            "False",
+        ],
+        correctAnswer: "True"
+    },
+
+    {
+        question: "Which of the following is correct to write Hello World on the web page?",
+        options: [
+            'System.out.println("Hello World")',
+            'document.write("Hello World")',
+            'response.write("Hello World")',
+            'print("Hello World")'
+        ],
+        correctAnswer: 'document.write("Hello World")'
+    },
+
+    {
         question: "How do you round the number 7.25, to the nearest integer?",
         options: [
             "Math.round(7.25)  ",
@@ -167,6 +177,16 @@ var questions = [
     },
 
     {
+        question: "Is it possible to declare a variable in Java Script along its type?",
+        options: [
+            "Yes",
+            "No"
+        ],
+        correctAnswer: "No"
+    },
+
+
+    {
         question: "Which of the following function of String object returns the character at the specified ind",
         options: [
             "concat()",
@@ -174,7 +194,18 @@ var questions = [
             "charAt()",
             "indexOf()"
         ],
-        correctAnswer: "2java"
+        correctAnswer: "charAt()"
+    },
+
+    {
+        question: "What language defines the behavior of a web page?",
+        options: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "XML"
+        ],
+        correctAnswer: "HTML"
     },
 
     {
@@ -408,7 +439,7 @@ function nextQuestion() {
 
 function checkAnswer(index, answer) {
     if (questions[index].correctAnswer === answer) {
-        score++;
+        score = score + 5;
         console.log(score)
     }
 }
@@ -422,7 +453,7 @@ function result() {
     completeHeading.appendChild(completeHeadingText)
 
     var result = document.createElement('h2')
-    var resultText = document.createTextNode(`${userName}, You got ${score} out of ${questions.length}`)
+    var resultText = document.createTextNode(`${userName}, You got ${score} out of ${100}`)
     result.appendChild(resultText)
 
 
