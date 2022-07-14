@@ -48,7 +48,6 @@ var questions = [
 
     },
 
-
     {
         question: "What is the correct way to write a JavaScript array?",
         options: [
@@ -73,7 +72,6 @@ var questions = [
 
     },
 
-
     {
         question: "Which event occurs when the user clicks on an HTML element?",
         options: [
@@ -82,35 +80,57 @@ var questions = [
             "onmouseclick",
             "onblur"
         ],
-        correctAnswer: ""
+        correctAnswer: "onclick"
 
     },
-
 
     {
-        question: "",
+        question: " How does Java Script store dates in objects of Date type?",
         options: [
-            "",
-            "",
-            "",
-            ""
+            "The number of days since January 1st, 1900",
+            "The number of milliseconds since January 1st, 1970",
+            "The number of seconds since January 1st, 1970",
+            "The number of picoseconds since January 1st, 1970"
         ],
-        correctAnswer: ""
+        correctAnswer: "The number of milliseconds since January 1st, 1970"
 
     },
-
 
     {
-        question: "",
+        question: "Which of the following is not a valid JavaScript variable name?",
         options: [
-            "",
-            "",
-            "",
+            "2java",
+            "_java_and_java_names",
+            "javaandjava",
+            "None of the above"
         ],
-        correctAnswer: ""
+        correctAnswer: "2java"
 
     },
 
+    {
+        question: "Which of the following is not a valid JavaScript variable name?",
+        options: [
+            "2java",
+            "_java_and_java_names",
+            "javaandjava",
+            "None of the above"
+        ],
+        correctAnswer: "2java"
+
+    },
+
+    // {
+    //     question: "What is the correct JavaScript syntax to change the content of the HTML element below?",
+    //     options: [
+    //         'document.getElementByName("p").innerHTML =  "Hello World!"',
+    //         'document.getElement("p").innerHTML = "Hello World!"',
+    //         '#demo.innerHTML = "Hello World!"',
+    //         'document.getElementById("demo").innerHTML = "Hello World!"'
+    //     ],
+    //     correctAnswer: 'document.getElementById("demo").innerHTML = "Hello World!"'
+
+    // },
 
 ]
 
