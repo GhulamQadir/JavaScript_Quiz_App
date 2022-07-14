@@ -25,6 +25,17 @@ var questions = [
     },
 
     {
+        question: "The external JavaScript file must contain the <script> tag.",
+        options: [
+            "True",
+            "False",
+
+        ],
+        correctAnswer: "False"
+
+    },
+
+    {
         question: "How to write an IF statement for executing some code if 'i' is NOT equal to 5?",
         options: [
             "if(i <> 5)",
@@ -47,6 +58,30 @@ var questions = [
         correctAnswer: "for(i=0; i<=10; i++)"
 
     },
+
+    {
+        question: "What will the following code return: Boolean(10 > 9)",
+        options: [
+            "true",
+            "false",
+
+        ],
+        correctAnswer: "true"
+
+    },
+
+    {
+        question: "Which operator is used to assign a value to a variable?",
+        options: [
+            "+",
+            "-",
+            "*",
+            "="
+        ],
+        correctAnswer: '='
+
+    },
+
 
     {
         question: "What is the correct way to write a JavaScript array?",
@@ -109,28 +144,47 @@ var questions = [
     },
 
     {
-        question: "Which of the following is not a valid JavaScript variable name?",
+        question: "What is the correct JavaScript syntax to change the content of the HTML element below?",
         options: [
-            "2java",
-            "_java_and_java_names",
-            "javaandjava",
-            "None of the above"
+            'document.getElementByName("p").innerHTML =  "Hello World!"',
+            'document.getElement("p").innerHTML = "Hello World!"',
+            '#demo.innerHTML = "Hello World!"',
+            'document.getElementById("demo").innerHTML = "Hello World!"'
         ],
-        correctAnswer: "2java"
+        correctAnswer: 'document.getElementById("demo").innerHTML = "Hello World!"'
 
     },
 
-    // {
-    //     question: "What is the correct JavaScript syntax to change the content of the HTML element below?",
-    //     options: [
-    //         'document.getElementByName("p").innerHTML =  "Hello World!"',
-    //         'document.getElement("p").innerHTML = "Hello World!"',
-    //         '#demo.innerHTML = "Hello World!"',
-    //         'document.getElementById("demo").innerHTML = "Hello World!"'
-    //     ],
-    //     correctAnswer: 'document.getElementById("demo").innerHTML = "Hello World!"'
+    {
+        question: "How do you round the number 7.25, to the nearest integer?",
+        options: [
+            "Math.round(7.25)  ",
+            "Math.rnd(7.25)",
+            "round(7.25)",
+            "rnd(7.25)"
+        ],
+        correctAnswer: "2java"
+    },
 
-    // },
+    {
+        question: "Which of the following function of String object returns the character at the specified ind",
+        options: [
+            "concat()",
+            "charCodeAt()",
+            "charAt()",
+            "indexOf()"
+        ],
+        correctAnswer: "2java"
+    },
+
+    {
+        question: "Is JavaScript case-sensitive?",
+        options: [
+            "Yes",
+            "No"
+        ],
+        correctAnswer: "Yes"
+    },
 
 ]
 
@@ -151,78 +205,125 @@ function renderQuestion(e) {
     var starting = document.getElementById('starting')
     starting.style.display = 'none'
 
-    var questionNum = document.createElement('h2')
-    var indexNum = questions.indexOf(questions[e])
-    var questionNumber = document.createTextNode(`Question ${indexNum + 1} of ${questions.length}`)
-    questionNum.appendChild(questionNumber)
-    questionsDiv.appendChild(questionNum)
+    if (questions[e].options.length === 2) {
 
-    var question = document.createElement('h2')
-    var questionText = document.createTextNode(`${questions[e].question}`)
-    question.appendChild(questionText)
-    questionsDiv.appendChild(question)
+        var questionNum = document.createElement('h2')
+        var indexNum = questions.indexOf(questions[e])
+        var questionNumber = document.createTextNode(`Question ${indexNum + 1} of ${questions.length}`)
+        questionNum.appendChild(questionNumber)
+        questionsDiv.appendChild(questionNum)
 
-    var radioBtn1 = document.createElement('input')
-    radioBtn1.setAttribute('type', 'radio')
-    radioBtn1.setAttribute('name', 'selectBtn')
-    radioBtn1.setAttribute('class', 'options')
-    var option1 = document.createElement('span')
-    option1.setAttribute('class', 'optionsName')
-    questionsDiv.appendChild(radioBtn1)
-    questionsDiv.appendChild(option1)
+        var question = document.createElement('h2')
+        var questionText = document.createTextNode(`${questions[e].question}`)
+        question.appendChild(questionText)
+        questionsDiv.appendChild(question)
 
-
-    var breakLine1 = document.createElement('br')
-    questionsDiv.appendChild(breakLine1)
-
-    var radioBtn2 = document.createElement('input')
-    radioBtn2.setAttribute('type', 'radio')
-    radioBtn2.setAttribute('name', 'selectBtn')
-    radioBtn2.setAttribute('class', 'options')
-    var option2 = document.createElement('span')
-    option2.setAttribute('class', 'optionsName')
-    questionsDiv.appendChild(radioBtn2)
-    questionsDiv.appendChild(option2)
-
-    var breakLine2 = document.createElement('br')
-    questionsDiv.appendChild(breakLine2)
-
-    var radioBtn3 = document.createElement('input')
-    radioBtn3.setAttribute('type', 'radio')
-    radioBtn3.setAttribute('name', 'selectBtn')
-    radioBtn3.setAttribute('class', 'options')
-    var option3 = document.createElement('span')
-    option3.setAttribute('class', 'optionsName')
-    questionsDiv.appendChild(radioBtn3)
-    questionsDiv.appendChild(option3)
-
-    var breakLine3 = document.createElement('br')
-    questionsDiv.appendChild(breakLine3)
+        var radioBtn1 = document.createElement('input')
+        radioBtn1.setAttribute('type', 'radio')
+        radioBtn1.setAttribute('name', 'selectBtn')
+        radioBtn1.setAttribute('class', 'options')
+        var option1 = document.createElement('span')
+        option1.setAttribute('class', 'optionsName')
+        questionsDiv.appendChild(radioBtn1)
+        questionsDiv.appendChild(option1)
 
 
-    var radioBtn4 = document.createElement('input')
-    radioBtn4.setAttribute('type', 'radio')
-    radioBtn4.setAttribute('name', 'selectBtn')
-    radioBtn4.setAttribute('class', 'options')
-    var option4 = document.createElement('span')
-    option4.setAttribute('class', 'optionsName')
-    questionsDiv.appendChild(radioBtn4)
-    questionsDiv.appendChild(option4)
+        var breakLine1 = document.createElement('br')
+        questionsDiv.appendChild(breakLine1)
 
-    var breakLine4 = document.createElement('br')
-    questionsDiv.appendChild(breakLine4)
+        var radioBtn2 = document.createElement('input')
+        radioBtn2.setAttribute('type', 'radio')
+        radioBtn2.setAttribute('name', 'selectBtn')
+        radioBtn2.setAttribute('class', 'options')
+        var option2 = document.createElement('span')
+        option2.setAttribute('class', 'optionsName')
+        questionsDiv.appendChild(radioBtn2)
+        questionsDiv.appendChild(option2)
 
-    var nextBtn = document.createElement('button')
-    var nextBtnText = document.createTextNode("Next")
-    nextBtn.setAttribute('onclick', 'nextQuestion()')
-    nextBtn.appendChild(nextBtnText)
-    questionsDiv.appendChild(nextBtn)
+        var breakLine2 = document.createElement('br')
+        questionsDiv.appendChild(breakLine2)
 
 
+        var nextBtn = document.createElement('button')
+        var nextBtnText = document.createTextNode("Next")
+        nextBtn.setAttribute('onclick', 'nextQuestion()')
+        nextBtn.appendChild(nextBtnText)
+        questionsDiv.appendChild(nextBtn)
+
+    }
+
+    if (questions[e].options.length > 2) {
+        var questionNum = document.createElement('h2')
+        var indexNum = questions.indexOf(questions[e])
+        var questionNumber = document.createTextNode(`Question ${indexNum + 1} of ${questions.length}`)
+        questionNum.appendChild(questionNumber)
+        questionsDiv.appendChild(questionNum)
+
+        var question = document.createElement('h2')
+        var questionText = document.createTextNode(`${questions[e].question}`)
+        question.appendChild(questionText)
+        questionsDiv.appendChild(question)
+
+        var radioBtn1 = document.createElement('input')
+        radioBtn1.setAttribute('type', 'radio')
+        radioBtn1.setAttribute('name', 'selectBtn')
+        radioBtn1.setAttribute('class', 'options')
+        var option1 = document.createElement('span')
+        option1.setAttribute('class', 'optionsName')
+        questionsDiv.appendChild(radioBtn1)
+        questionsDiv.appendChild(option1)
+
+
+        var breakLine1 = document.createElement('br')
+        questionsDiv.appendChild(breakLine1)
+
+        var radioBtn2 = document.createElement('input')
+        radioBtn2.setAttribute('type', 'radio')
+        radioBtn2.setAttribute('name', 'selectBtn')
+        radioBtn2.setAttribute('class', 'options')
+        var option2 = document.createElement('span')
+        option2.setAttribute('class', 'optionsName')
+        questionsDiv.appendChild(radioBtn2)
+        questionsDiv.appendChild(option2)
+
+        var breakLine2 = document.createElement('br')
+        questionsDiv.appendChild(breakLine2)
+
+        var radioBtn3 = document.createElement('input')
+        radioBtn3.setAttribute('type', 'radio')
+        radioBtn3.setAttribute('name', 'selectBtn')
+        radioBtn3.setAttribute('class', 'options')
+        var option3 = document.createElement('span')
+        option3.setAttribute('class', 'optionsName')
+        questionsDiv.appendChild(radioBtn3)
+        questionsDiv.appendChild(option3)
+
+        var breakLine3 = document.createElement('br')
+        questionsDiv.appendChild(breakLine3)
+
+
+        var radioBtn4 = document.createElement('input')
+        radioBtn4.setAttribute('type', 'radio')
+        radioBtn4.setAttribute('name', 'selectBtn')
+        radioBtn4.setAttribute('class', 'options')
+        var option4 = document.createElement('span')
+        option4.setAttribute('class', 'optionsName')
+        questionsDiv.appendChild(radioBtn4)
+        questionsDiv.appendChild(option4)
+
+        var breakLine4 = document.createElement('br')
+        questionsDiv.appendChild(breakLine4)
+
+        var nextBtn = document.createElement('button')
+        var nextBtnText = document.createTextNode("Next")
+        nextBtn.setAttribute('onclick', 'nextQuestion()')
+        nextBtn.appendChild(nextBtnText)
+        questionsDiv.appendChild(nextBtn)
+    }
     var options = document.getElementsByClassName('options')
     var optionsNames = document.getElementsByClassName('optionsName')
-    for (var i = 0; i < options.length; i++) {
 
+    for (var i = 0; i < options.length; i++) {
         options[i].value = questions[e].options[i]
         optionsNames[i].innerHTML = questions[e].options[i]
 
