@@ -1,3 +1,26 @@
+#starting {
+    margin: auto;
+    width: 40%;
+    padding: 10px;
+}
+
+#img_div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#heading_div {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#logo {
+    height: 100px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+
 .questions_div {
     background-color: aliceblue;
     border: 1px solid grey;

@@ -363,27 +363,49 @@ function renderQuestion(e) {
 
 
 
-function hello() {
+function starting() {
     try {
-        var starting = document.getElementById('starting')
-        var a = document.createElement("input")
-        a.setAttribute('type', 'text')
-        a.setAttribute('placeholder', 'Enter your name')
-        a.setAttribute('id', 'name_field')
+        var startingDiv = document.getElementById('starting')
+
+        var imgDiv = document.createElement('div')
+        imgDiv.setAttribute('id', 'img_div')
+        startingDiv.appendChild(imgDiv)
+
+        var jsLogo = document.createElement('img')
+        jsLogo.setAttribute('src', 'https://logowik.com/content/uploads/images/javascript.jpg')
+        jsLogo.setAttribute('id', 'logo')
+        imgDiv.appendChild(jsLogo)
+
+
+
+        var headingDiv = document.createElement('div')
+        headingDiv.setAttribute('id', 'heading_div')
+        startingDiv.appendChild(headingDiv)
+
+        var heading = document.createElement('h2')
+        var headingText = document.createTextNode('JavaScript Quiz')
+        heading.appendChild(headingText)
+        headingDiv.appendChild(heading)
+
+
+        var mainDiv = document.createElement('div')
+        startingDiv.appendChild(mainDiv)
+
+        var inputField = document.createElement("input")
+        inputField.setAttribute('type', 'text')
+        inputField.setAttribute('placeholder', 'Enter your name')
+        inputField.setAttribute('id', 'name_field')
+        mainDiv.appendChild(inputField)
 
 
         var breakLine = document.createElement('br')
+        mainDiv.appendChild(breakLine)
 
         var btn = document.createElement('button')
         var btnText = document.createTextNode("Start quiz")
         btn.setAttribute('onclick', 'renderQuestion(0), time()')
-
         btn.appendChild(btnText)
-
-
-        starting.appendChild(a)
-        starting.appendChild(breakLine)
-        starting.appendChild(btn)
+        mainDiv.appendChild(btn)
 
     } catch (error) {
         console.log(error)
