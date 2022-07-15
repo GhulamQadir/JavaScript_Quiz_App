@@ -229,7 +229,8 @@ var questionsDiv = document.getElementById('questions_div')
 function renderQuestion(e) {
     var getName = document.getElementById('name_field')
     if (getName.value === "") {
-        alert("Please enter your name")
+        var startingDiv = document.getElementById('starting')
+        
         return false;
     }
     userName = getName.value
@@ -452,12 +453,6 @@ function starting() {
         var breakLine = document.createElement('br')
         mainDiv.appendChild(breakLine)
 
-        var btn = document.createElement('button')
-        btn.setAttribute('id', 'start_quiz_btn')
-        var btnText = document.createTextNode("Start quiz")
-        btn.setAttribute('onclick', 'renderQuestion(0), time()')
-        btn.appendChild(btnText)
-        mainDiv.appendChild(btn)
 
 
         var noteHeading = document.createElement('p')
@@ -478,6 +473,17 @@ function starting() {
         var note2Text = document.createTextNode('Do not refresh the Page.')
         note2.appendChild(note2Text)
         mainDiv.appendChild(note2)
+
+        var btnDiv = document.createElement('div')
+        btnDiv.setAttribute('id', 'btn_div')
+        var btn = document.createElement('button')
+        btn.setAttribute('id', 'start_quiz_btn')
+        var btnText = document.createTextNode("Start quiz")
+        btn.setAttribute('onclick', 'renderQuestion(0), time()')
+        btn.appendChild(btnText)
+        btnDiv.appendChild(btn)
+        mainDiv.appendChild(btnDiv)
+
     } catch (error) {
         console.log(error)
     }
