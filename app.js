@@ -434,6 +434,12 @@ function starting() {
         minutes.appendChild(minutesText)
         time.appendChild(minutes)
 
+        var marks = document.createElement('p')
+        marks.setAttribute('class', 'marks')
+        var marksText = document.createTextNode('Each question carry 5 marks, no negative marking')
+        marks.appendChild(marksText)
+        mainDiv.appendChild(marks)
+
 
 
         var inputField = document.createElement("input")
@@ -447,11 +453,31 @@ function starting() {
         mainDiv.appendChild(breakLine)
 
         var btn = document.createElement('button')
+        btn.setAttribute('id', 'start_quiz_btn')
         var btnText = document.createTextNode("Start quiz")
         btn.setAttribute('onclick', 'renderQuestion(0), time()')
         btn.appendChild(btnText)
         mainDiv.appendChild(btn)
 
+
+        var noteHeading = document.createElement('p')
+        noteHeading.setAttribute('id', 'note_heading')
+        var noteHeadingText = document.createTextNode('Note:')
+        noteHeading.appendChild(noteHeadingText)
+        mainDiv.appendChild(noteHeading)
+
+
+        var note1 = document.createElement('p')
+        note1.setAttribute('class', 'note')
+        var note1Text = document.createTextNode('Test will be submitted after time is Expired.')
+        note1.appendChild(note1Text)
+        mainDiv.appendChild(note1)
+
+        var note2 = document.createElement('p')
+        note2.setAttribute('class', 'note')
+        var note2Text = document.createTextNode('Do not refresh the Page.')
+        note2.appendChild(note2Text)
+        mainDiv.appendChild(note2)
     } catch (error) {
         console.log(error)
     }
