@@ -240,12 +240,22 @@ function renderQuestion(e) {
         modalContent.setAttribute('class', 'modal-content')
         modal.appendChild(modalContent)
 
+
+
+        var text = document.createElement('h3')
+        var textNode = document.createTextNode('Please enter your name')
+        text.appendChild(textNode)
+        modalContent.appendChild(text)
+
+        var okBtnDiv = document.createElement('div')
+        okBtnDiv.setAttribute('id','ok_btn_div')
         var okBtn = document.createElement('button')
         okBtn.setAttribute('id', 'close')
         okBtn.setAttribute('class', 'close')
         var okBtnText = document.createTextNode('Ok')
         okBtn.appendChild(okBtnText)
-        modalContent.appendChild(okBtn)
+        okBtnDiv.appendChild(okBtn)
+        modalContent.appendChild(okBtnDiv)
 
 
         var getModal = document.getElementById("myModal");
