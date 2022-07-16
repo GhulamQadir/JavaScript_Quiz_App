@@ -228,13 +228,56 @@ var questionsDiv = document.getElementById('questions_div')
 
 function renderQuestion(e) {
     var getName = document.getElementById('name_field')
+    var starting = document.getElementById('starting')
     if (getName.value === "") {
-        var startingDiv = document.getElementById('starting')
-        
+
+        var modal = document.createElement('div')
+        modal.setAttribute('id', 'myModal')
+        modal.setAttribute('class', 'modal')
+        starting.appendChild(modal)
+
+        var modalContent = document.createElement('div')
+        modalContent.setAttribute('class', 'modal-content')
+        modal.appendChild(modalContent)
+
+        var okBtn = document.createElement('button')
+        okBtn.setAttribute('id', 'close')
+        okBtn.setAttribute('class', 'close')
+        var okBtnText = document.createTextNode('Ok')
+        okBtn.appendChild(okBtnText)
+        modalContent.appendChild(okBtn)
+
+
+        var getModal = document.getElementById("myModal");
+        var startQuizBtn = document.getElementById('start_quiz_btn')
+
+        var close = document.getElementById('close')
+
+
+        // When the user clicks the button, open the modal 
+        startQuizBtn.onclick = function () {
+            getModal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        close.onclick = function () {
+            getModal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == getModal) {
+                getModal.style.display = "none";
+            }
+        }
+
+
+
+
+        // alert("Please enter your name")
         return false;
     }
     userName = getName.value
-    var starting = document.getElementById('starting')
     starting.style.display = 'none'
 
     if (questions[e].options.length === 2) {
