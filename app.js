@@ -168,12 +168,12 @@ var questions = [
     {
         question: "How do you round the number 7.25, to the nearest integer?",
         options: [
-            "Math.round(7.25)  ",
+            "Math.round(7.25)",
             "Math.rnd(7.25)",
             "round(7.25)",
             "rnd(7.25)"
         ],
-        correctAnswer: "2java"
+        correctAnswer: "Math.round(7.25)"
     },
 
     {
@@ -223,12 +223,11 @@ var score = 0
 var answer = ""
 var userName = ""
 var usersSelectedAnswers = []
+var renderQuestions = document.getElementById('render_questions')
 var questionsDiv = document.getElementById('questions_div')
 
 
 function renderQuestion(e) {
-    questionsDiv.style.display = "block"
-    questionsDiv.className = ' questionsDiv'
 
     var getName = document.getElementById('name_field')
     var starting = document.getElementById('starting')
@@ -292,6 +291,8 @@ function renderQuestion(e) {
     }
     userName = getName.value
     starting.style.display = 'none'
+    renderQuestions.style.display = "block"
+    // questionsDiv.className = ' questionsDiv'
 
     if (questions[e].options.length === 2) {
 
@@ -570,7 +571,9 @@ function nextQuestion() {
                 usersSelectedAnswers.push(selectOption[i].value)
                 console.log(selectOption[i].value)
                 checkAnswer(questionCount, answer)
-                questionsDiv.style.display = 'none'
+                renderQuestions.style.display = 'none'
+
+                clearInterval(interval)
 
 
 
@@ -612,8 +615,10 @@ function checkAnswer(index, answer) {
 
 function result() {
     clearInterval(interval)
+
+
     var resultDiv = document.getElementById('result')
-    questionsDiv.style.display = 'none'
+    renderQuestions.style.display = 'none'
 
     var completeHeading = document.createElement('h2')
     completeHeading.style.color = "white"
@@ -628,7 +633,7 @@ function result() {
 
     resultDiv.appendChild(completeHeading)
     resultDiv.appendChild(result)
-
+    
 
     // questions checking
     for (var i = 0; i < questions.length; i++) {
@@ -756,27 +761,21 @@ var seconds = 60;
 
 function time() {
     var timeDiv = document.getElementById('time')
-    if (userName === "") {
-        timeDiv.innerHTML = ""
-    }
-    else if (userName != "") {
-        // minutes
-        var minutes = document.createElement('span')
-        minutes.setAttribute('id', 'minutes')
-        var minutesText = document.createTextNode('2:')
-        minutes.appendChild(minutesText)
-        timeDiv.appendChild(minutes)
+
+    var minutes = document.createElement('span')
+    minutes.setAttribute('id', 'minutes')
+    var minutesText = document.createTextNode('2:')
+    minutes.appendChild(minutesText)
+    timeDiv.appendChild(minutes)
 
 
-        // seconds
-        var seconds = document.createElement('span')
-        seconds.setAttribute('id', 'seconds')
-        var secondsText = document.createTextNode('00')
-        seconds.appendChild(secondsText)
-        timeDiv.appendChild(seconds)
-        startTimer()
-    }
-
+    // seconds
+    var seconds = document.createElement('span')
+    seconds.setAttribute('id', 'seconds')
+    var secondsText = document.createTextNode('00')
+    seconds.appendChild(secondsText)
+    timeDiv.appendChild(seconds)
+    startTimer()
 }
 
 
@@ -796,10 +795,10 @@ function timer() {
             minutes++
             getMinutes.innerHTML = "00:"
             clearInterval(interval)
-            questionsDiv.innerHTML = ""
+            renderQuestions.innerHTML = ""
 
             // alert("Time's Up")
-            questionsDiv.style.display = 'none'
+            renderQuestions.style.display = 'none'
             result()
         }
     }
@@ -827,5 +826,4 @@ function timer() {
 
 function startTimer() {
     interval = setInterval(timer, 1000)
-
 }
