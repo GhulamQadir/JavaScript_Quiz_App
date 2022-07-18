@@ -1,67 +1,67 @@
 var questions = [
 
-    {
-        question: "Inside which HTML element do we put the JavaScript?",
-        options: [
-            "js",
-            "script",
-            "scripting",
-            "javascript"
-        ],
-        correctAnswer: "<script>"
-    },
+    // {
+    //     question: "Inside which HTML element do we put the JavaScript?",
+    //     options: [
+    //         "js",
+    //         "script",
+    //         "scripting",
+    //         "javascript"
+    //     ],
+    //     correctAnswer: "<script>"
+    // },
 
-    {
-        question: "How to write an IF statement in JavaScript?",
-        options: [
-            "if(i==5)",
-            "if i = 5",
-            "if i = 5 then",
-            "if i == 5 then"
-        ],
-        correctAnswer: "if(i==5)"
-    },
+    // {
+    //     question: "How to write an IF statement in JavaScript?",
+    //     options: [
+    //         "if(i==5)",
+    //         "if i = 5",
+    //         "if i = 5 then",
+    //         "if i == 5 then"
+    //     ],
+    //     correctAnswer: "if(i==5)"
+    // },
 
-    {
-        question: "The external JavaScript file must contain the <script> tag.",
-        options: [
-            "True",
-            "False",
+    // {
+    //     question: "The external JavaScript file must contain the <script> tag.",
+    //     options: [
+    //         "True",
+    //         "False",
 
-        ],
-        correctAnswer: "False"
-    },
+    //     ],
+    //     correctAnswer: "False"
+    // },
 
-    {
-        question: "How to write an IF statement for executing some code if 'i' is NOT equal to 5?",
-        options: [
-            "if(i <> 5)",
-            "if i=! 5 then",
-            "if(i != 5)",
-            "if i <> 5"
-        ],
-        correctAnswer: "if(i != 5)"
-    },
+    // {
+    //     question: "How to write an IF statement for executing some code if 'i' is NOT equal to 5?",
+    //     options: [
+    //         "if(i <> 5)",
+    //         "if i=! 5 then",
+    //         "if(i != 5)",
+    //         "if i <> 5"
+    //     ],
+    //     correctAnswer: "if(i != 5)"
+    // },
 
-    {
-        question: "How does a FOR loop start?",
-        options: [
-            "for i = 1 to 10",
-            "for(i=0; i<=10; i++)",
-            "for(i <= 10; i++)",
-            "for(i = 0; i<=10)"
-        ],
-        correctAnswer: "for(i=0; i<=10; i++)"
-    },
+    // {
+    //     question: "How does a FOR loop start?",
+    //     options: [
+    //         "for i = 1 to 10",
+    //         "for(i=0; i<=10; i++)",
+    //         "for(i <= 10; i++)",
+    //         "for(i = 0; i<=10)"
+    //     ],
+    //     correctAnswer: "for(i=0; i<=10; i++)"
+    // },
 
-    {
-        question: "What will the following code return: Boolean(10 > 9)",
-        options: [
-            "true",
-            "false",
-        ],
-        correctAnswer: "true"
-    },
+    // {
+    //     question: "What will the following code return: Boolean(10 > 9)",
+    //     options: [
+    //         "true",
+    //         "false",
+    //     ],
+    //     correctAnswer: "true"
+    // },
 
     {
         question: "Which operator is used to assign a value to a variable?",
@@ -616,6 +616,21 @@ function checkAnswer(index, answer) {
 function result() {
     clearInterval(interval)
 
+    var myMinutes = 1 - minutes
+    var mySeconds = 60 - seconds
+
+    if (mySeconds < 10) {
+        mySeconds = `0${mySeconds}`
+    }
+    if (minutes === 0 && seconds === 0) {
+        myMinutes = 2;
+        mySeconds = 0
+        mySeconds = `0${seconds}`
+
+    }
+    // if (myMinutes === 1 && mySeconds === 60) {
+    //     }
+
 
     var resultDiv = document.getElementById('result')
     renderQuestions.style.display = 'none'
@@ -633,7 +648,22 @@ function result() {
 
     resultDiv.appendChild(completeHeading)
     resultDiv.appendChild(result)
-    
+
+
+    var timeElapsed = document.createElement('h3')
+    timeElapsed.setAttribute('class', 'time_elapsed')
+    var timeElapsedText = document.createTextNode('Time Elapsed: ')
+    timeElapsed.appendChild(timeElapsedText)
+    resultDiv.appendChild(timeElapsed)
+
+    var duration = document.createElement('span')
+    duration.setAttribute('class', 'time_elapsed')
+    var durationText = document.createTextNode(`${myMinutes}:${mySeconds}`)
+    duration.appendChild(durationText)
+    resultDiv.appendChild(duration)
+
+
+
 
     // questions checking
     for (var i = 0; i < questions.length; i++) {
@@ -787,31 +817,43 @@ function timer() {
 
     seconds--
     getSeconds.innerHTML = seconds;
-
     getMinutes.innerHTML = `${minutes}:`
 
-    if (minutes === 0) {
-        if (minutes === 0 && seconds === 0) {
-            minutes++
-            getMinutes.innerHTML = "00:"
-            clearInterval(interval)
-            renderQuestions.innerHTML = ""
+    // if (minutes === 0) {
 
-            // alert("Time's Up")
-            renderQuestions.style.display = 'none'
-            result()
-        }
+    if (minutes === 0 && seconds === 0) {
+        seconds = 0
+        console.log(minutes)
+        console.log(seconds)
+        getMinutes.innerHTML = "00:"
+        clearInterval(interval)
+        renderQuestions.innerHTML = ""
+
+        // alert("Time's Up")
+        renderQuestions.style.display = 'none'
+        result()
     }
-    if (minutes > 0 && seconds === 60) {
-        getSeconds.innerHTML = "00"
+    if (minutes < 1) {
+        getMinutes.innerHTML = `0${minutes}:`
     }
+    // if (minutes > 0 && seconds === 60) {
+    //     getSeconds.innerHTML = "00"
+    // }
+    // else if (minutes < 1) {
+    //     getSeconds.innerHTML = "60"
+    // }
+
 
 
     if (seconds === 0) {
         minutes--
         getMinutes.innerHTML = `${minutes}:`
         seconds = 60
-        if (seconds === 60) {
+        if (minutes < 1 && seconds === 60) {
+            getSeconds.innerHTML = seconds
+
+        }
+        else if (seconds === 60) {
             getSeconds.innerHTML = "00"
         }
     }

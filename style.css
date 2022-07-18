@@ -242,3 +242,8 @@ body {
     display: none;
     border-radius: 8px;
 }
+
+.time_elapsed {
+    color: white;
+    display: inline;
+}
