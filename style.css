@@ -198,6 +198,39 @@ body {
     color: white;
 }
 
-.chANGE-BG {
-    background-color: aqua;
+#questions_div {
+    width: 50%;
+    margin: auto;
+    background-color: white;
+    padding: 5px 5px 10px 10px;
+    display: none;
+    border-radius: 8px;
+}
+
+.visible_questions {
+    display: block;
+}
+
+.question_num {
+    color: blue;
+}
+
+.question {
+    color: black;
+}
+
+.optionsName {
+    color: black;
+    font-size: 20px;
+}
+
+.next_btn_div {
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+
+.questionsDiv {
+    margin-top: 100px;
+    background-color: green;
 }

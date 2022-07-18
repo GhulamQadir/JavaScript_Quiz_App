@@ -227,6 +227,9 @@ var questionsDiv = document.getElementById('questions_div')
 
 
 function renderQuestion(e) {
+    questionsDiv.style.display = "block"
+    questionsDiv.className = ' questionsDiv'
+
     var getName = document.getElementById('name_field')
     var starting = document.getElementById('starting')
     if (getName.value === "") {
@@ -292,15 +295,15 @@ function renderQuestion(e) {
 
     if (questions[e].options.length === 2) {
 
-        var questionNum = document.createElement('h2')
-        questionNum.style.color = "white"
+        var questionNum = document.createElement('p')
+        questionNum.setAttribute('class', 'question_num')
         var indexNum = questions.indexOf(questions[e])
         var questionNumber = document.createTextNode(`Question ${indexNum + 1} of ${questions.length}`)
         questionNum.appendChild(questionNumber)
         questionsDiv.appendChild(questionNum)
 
-        var question = document.createElement('h2')
-        question.style.color = "white"
+        var question = document.createElement('p')
+        question.setAttribute('class', 'question')
         var questionText = document.createTextNode(`${questions[e].question}`)
         question.appendChild(questionText)
         questionsDiv.appendChild(question)
@@ -310,7 +313,6 @@ function renderQuestion(e) {
         radioBtn1.setAttribute('name', 'selectBtn')
         radioBtn1.setAttribute('class', 'options')
         var option1 = document.createElement('span')
-        option1.style.color = "white"
         option1.setAttribute('class', 'optionsName')
         questionsDiv.appendChild(radioBtn1)
         questionsDiv.appendChild(option1)
@@ -324,7 +326,6 @@ function renderQuestion(e) {
         radioBtn2.setAttribute('name', 'selectBtn')
         radioBtn2.setAttribute('class', 'options')
         var option2 = document.createElement('span')
-        option2.style.color = "white"
         option2.setAttribute('class', 'optionsName')
         questionsDiv.appendChild(radioBtn2)
         questionsDiv.appendChild(option2)
@@ -333,24 +334,27 @@ function renderQuestion(e) {
         questionsDiv.appendChild(breakLine2)
 
 
+        var nextBtnDiv = document.createElement('div')
+        nextBtnDiv.setAttribute('class', 'next_btn_div')
         var nextBtn = document.createElement('button')
         var nextBtnText = document.createTextNode("Next")
         nextBtn.setAttribute('onclick', 'nextQuestion()')
         nextBtn.appendChild(nextBtnText)
-        questionsDiv.appendChild(nextBtn)
+        nextBtnDiv.appendChild(nextBtn)
+        questionsDiv.appendChild(nextBtnDiv)
 
     }
 
     if (questions[e].options.length > 2) {
-        var questionNum = document.createElement('h2')
-        questionNum.style.color = "white"
+        var questionNum = document.createElement('p')
+        questionNum.setAttribute('class', 'question_num')
         var indexNum = questions.indexOf(questions[e])
         var questionNumber = document.createTextNode(`Question ${indexNum + 1} of ${questions.length}`)
         questionNum.appendChild(questionNumber)
         questionsDiv.appendChild(questionNum)
 
-        var question = document.createElement('h2')
-        question.style.color = "white"
+        var question = document.createElement('p')
+        question.setAttribute('class', 'question')
         var questionText = document.createTextNode(`${questions[e].question}`)
         question.appendChild(questionText)
         questionsDiv.appendChild(question)
@@ -360,7 +364,6 @@ function renderQuestion(e) {
         radioBtn1.setAttribute('name', 'selectBtn')
         radioBtn1.setAttribute('class', 'options')
         var option1 = document.createElement('span')
-        option1.style.color = "white"
         option1.setAttribute('class', 'optionsName')
         questionsDiv.appendChild(radioBtn1)
         questionsDiv.appendChild(option1)
@@ -374,7 +377,6 @@ function renderQuestion(e) {
         radioBtn2.setAttribute('name', 'selectBtn')
         radioBtn2.setAttribute('class', 'options')
         var option2 = document.createElement('span')
-        option2.style.color = "white"
         option2.setAttribute('class', 'optionsName')
         questionsDiv.appendChild(radioBtn2)
         questionsDiv.appendChild(option2)
@@ -387,7 +389,6 @@ function renderQuestion(e) {
         radioBtn3.setAttribute('name', 'selectBtn')
         radioBtn3.setAttribute('class', 'options')
         var option3 = document.createElement('span')
-        option3.style.color = "white"
         option3.setAttribute('class', 'optionsName')
         questionsDiv.appendChild(radioBtn3)
         questionsDiv.appendChild(option3)
@@ -401,7 +402,6 @@ function renderQuestion(e) {
         radioBtn4.setAttribute('name', 'selectBtn')
         radioBtn4.setAttribute('class', 'options')
         var option4 = document.createElement('span')
-        option4.style.color = "white"
         option4.setAttribute('class', 'optionsName')
         questionsDiv.appendChild(radioBtn4)
         questionsDiv.appendChild(option4)
@@ -409,11 +409,14 @@ function renderQuestion(e) {
         var breakLine4 = document.createElement('br')
         questionsDiv.appendChild(breakLine4)
 
+        var nextBtnDiv = document.createElement('div')
+        nextBtnDiv.setAttribute('class', 'next_btn_div')
         var nextBtn = document.createElement('button')
         var nextBtnText = document.createTextNode("Next")
         nextBtn.setAttribute('onclick', 'nextQuestion()')
         nextBtn.appendChild(nextBtnText)
-        questionsDiv.appendChild(nextBtn)
+        nextBtnDiv.appendChild(nextBtn)
+        questionsDiv.appendChild(nextBtnDiv)
     }
     var options = document.getElementsByClassName('options')
     var optionsNames = document.getElementsByClassName('optionsName')
@@ -567,7 +570,8 @@ function nextQuestion() {
                 usersSelectedAnswers.push(selectOption[i].value)
                 console.log(selectOption[i].value)
                 checkAnswer(questionCount, answer)
-                questionsDiv.innerHTML = ""
+                questionsDiv.style.display = 'none'
+
 
 
                 alert("completed")
@@ -609,6 +613,7 @@ function checkAnswer(index, answer) {
 function result() {
     clearInterval(interval)
     var resultDiv = document.getElementById('result')
+    questionsDiv.style.display = 'none'
 
     var completeHeading = document.createElement('h2')
     completeHeading.style.color = "white"
@@ -794,6 +799,7 @@ function timer() {
             questionsDiv.innerHTML = ""
 
             // alert("Time's Up")
+            questionsDiv.style.display = 'none'
             result()
         }
     }
