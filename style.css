@@ -198,18 +198,10 @@ body {
     color: white;
 }
 
-/* #questions_div {
-    width: 50%;
-    margin: auto;
-    background-color: white;
-    padding: 5px 5px 10px 10px;
-    display: none;
-    border-radius: 8px;
-} */
 
-.visible_questions {
+/* .visible_questions {
     display: block;
-}
+} */
 
 .question_num {
     color: blue;
@@ -230,8 +222,9 @@ body {
     align-items: right;
 }
 
-.questionsDiv {
-    margin-top: 100px;
+
+#questions_div {
+    padding-top: 20px;
 }
 
 #render_questions {
@@ -241,6 +234,11 @@ body {
     padding: 5px 5px 10px 10px;
     display: none;
     border-radius: 8px;
+}
+
+#time {
+    float: right;
+    padding: 5px 5px 115px 5px;
 }
 
 .time_elapsed {
