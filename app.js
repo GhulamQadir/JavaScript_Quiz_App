@@ -8,7 +8,7 @@ var questions = [
             "scripting",
             "javascript"
         ],
-        correctAnswer: "<script>"
+        correctAnswer: "script"
     },
 
     {
@@ -145,14 +145,14 @@ var questions = [
 
     // },
 
-    // {
-    //     question: "JavaScript ignores extra spaces",
-    //     options: [
-    //         "True",
-    //         "False",
-    //     ],
-    //     correctAnswer: "True"
-    // },
+    {
+        question: "JavaScript ignores extra spaces",
+        options: [
+            "True",
+            "False",
+        ],
+        correctAnswer: "False"
+    },
 
     // {
     //     question: "Which of the following is correct to write Hello World on the web page?",
@@ -223,6 +223,7 @@ var score = 0
 var answer = ""
 var userName = ""
 var usersSelectedAnswers = []
+var correctAnswers = []
 var renderQuestions = document.getElementById('render_questions')
 var questionsDiv = document.getElementById('questions_div')
 
@@ -429,6 +430,7 @@ function nextQuestion() {
             else {
                 answer = selectOption[i].value
                 usersSelectedAnswers.push(selectOption[i].value)
+
                 console.log(selectOption[i].value)
                 selectOption[i].checked = false
                 questionsDiv.innerHTML = ""
@@ -450,6 +452,7 @@ function nextQuestion() {
 
 function checkAnswer(index, answer) {
     if (questions[index].correctAnswer === answer) {
+        correctAnswers.push(answer)
         score = score + 5;
         console.log(score)
     }
@@ -663,51 +666,35 @@ function result() {
 
 function usersAnswers() {
     var options = document.getElementsByClassName('options')
-    var optionsName = document.getElementsByClassName('optionsNameResult')
     var checkedValue = null
 
 
     for (var i = 0; i < options.length; i++) {
         options[i].disabled = true
+
         for (var j = 0; j < usersSelectedAnswers.length; j++) {
             if (options[i].value === usersSelectedAnswers[j]) {
                 options[i].checked = true
+                options[i].disabled = true
                 checkedValue = options[i].value
+
+                console.log(usersSelectedAnswers)
                 usersSelectedAnswers.splice(j, 1);
-                console.log(checkedValue)
 
-                if (options[i].value === optionsName[i].innerHTML) {
-                    console.log(questions[j].correctAnswer)
-                    optionsName[i].parentElement.style.backgroundColor = "green"
+                for (var b = 0; b < questions.length; b++) {
+                    if (options[i].value === questions[b].correctAnswer) {
+                        options[i].parentElement.style.backgroundColor = "green"
+                    }
+                    //     if (options[i].value !== correctAnswers[b]) {
+                    //         options[i].parentElement.style.backgroundColor = "red"
+                    //         correctAnswers.splice(b, 1)
+                    //     }
                 }
-
             }
         }
-
     }
 }
 
-
-// function checkCorrectAnswer() {
-//     var optionsName = document.getElementsByClassName('optionsNameResult')
-//     var options = document.getElementsByClassName('options').value
-//     for (var i = 0; i < questions.length; i++) {
-//         for (var j = 0; j < options.length; j++) {
-//             for (var k = 0; k < optionsName.length; k++) {
-//                 // if (optionsName[j].innerHTML === questions[i].correctAnswer) {
-//                 //     optionsName[j].className += ' hehe'
-//                 //     if (optionsName[j].innerHTML != questions[i].correctAnswer) {
-//                 //         optionsName[j].className += ' haha'
-//                 //     }
-
-//                 // }
-
-//                 }
-//             }
-
-//         }
-//     }
-// }
 
 
 var minutes = 1;
