@@ -10,7 +10,77 @@
 
 <body onload="starting()">
 
-    <div id="starting"></div>
+    <!-- starting div starts -->
+    <div id="starting">
+        <div id="img_div">
+            <img id="logo"
+                src="https://i0.wp.com/blog.canadianwebhosting.com/wp-content/uploads/2018/04/javascript-logo.png?ssl=1"
+                alt="Logo" />
+        </div>
+        <div id="heading_div">
+            <p class="quiz_heading">
+                JavaScript Quiz
+            </p>
+        </div>
+
+        <div>
+            <p class="middle_heading">
+                Online Test: JavaScript Programming Test
+            </p>
+
+            <p id="instructions_heading">
+                Instructions:
+            </p>
+
+            <p class="questions_and_time">
+                Total Number of Questions:
+                <span class="minutes_and_questionsNumber">30</span>
+            </p>
+
+            <p class="questions_and_time">
+                Time alloted:
+                <span class="minutes_and_questionsNumber">30 minutes</span>
+            </p>
+
+            <p class="marks">
+                Each question carry 5 marks, no negative marking
+            </p>
+
+            <input type="text" id="name_field" placeholder="Enter your name" />
+            <br>
+
+            <p id="note_heading">
+                Note:
+            </p>
+            <p class="note">
+                Test will be submitted after time is Expired.
+                <br>
+                Do not refresh the Page.
+            </p>
+
+            <div id="btn_div">
+                <button id="start_quiz_btn" onclick="renderQuestion(0)">Start quiz</button>
+            </div>
+
+        </div>
+
+
+        <!-- show error model -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <h3>Please enter your name</h3>
+
+                <div id="ok_btn_div">
+                    <button id="close" class="close" onclick="closeErrorModal()">Ok</button>
+                </div>
+            </div>
+        </div>
+        <!-- show error model ends here-->
+
+    </div>
+    <!-- starting div work ends here -->
+
+
 
 
     <div id="render_questions">

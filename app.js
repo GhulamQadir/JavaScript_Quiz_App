@@ -226,6 +226,11 @@ var usersSelectedAnswers = []
 var renderQuestions = document.getElementById('render_questions')
 var questionsDiv = document.getElementById('questions_div')
 
+function closeErrorModal() {
+    var getModal = document.getElementById("myModal");
+    getModal.style.display = "none";
+}
+
 
 function renderQuestion(e) {
 
@@ -233,47 +238,8 @@ function renderQuestion(e) {
     var starting = document.getElementById('starting')
     if (getName.value === "") {
 
-        var modal = document.createElement('div')
-        modal.setAttribute('id', 'myModal')
-        modal.setAttribute('class', 'modal')
-        starting.appendChild(modal)
-
-        var modalContent = document.createElement('div')
-        modalContent.setAttribute('class', 'modal-content')
-        modal.appendChild(modalContent)
-
-
-
-        var text = document.createElement('h3')
-        var textNode = document.createTextNode('Please enter your name')
-        text.appendChild(textNode)
-        modalContent.appendChild(text)
-
-        var okBtnDiv = document.createElement('div')
-        okBtnDiv.setAttribute('id', 'ok_btn_div')
-        var okBtn = document.createElement('button')
-        okBtn.setAttribute('id', 'close')
-        okBtn.setAttribute('class', 'close')
-        var okBtnText = document.createTextNode('Ok')
-        okBtn.appendChild(okBtnText)
-        okBtnDiv.appendChild(okBtn)
-        modalContent.appendChild(okBtnDiv)
-
-
         var getModal = document.getElementById("myModal");
-        var startQuizBtn = document.getElementById('start_quiz_btn')
-
-        var close = document.getElementById('close')
-
-
         getModal.style.display = "block";
-
-
-
-        // When the user clicks on <span> (x), close the modal
-        close.onclick = function () {
-            getModal.style.display = "none";
-        }
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
@@ -287,6 +253,7 @@ function renderQuestion(e) {
         starting.style.display = 'none'
         renderQuestions.style.display = "block"
         renderQuestions.style.marginTop = 50
+        time()
 
         if (questions[e].options.length === 2) {
 
@@ -429,128 +396,8 @@ function renderQuestion(e) {
 
 
 function starting() {
-    try {
-        var startingDiv = document.getElementById('starting')
-
-        var imgDiv = document.createElement('div')
-        imgDiv.setAttribute('id', 'img_div')
-        startingDiv.appendChild(imgDiv)
-
-        var jsLogo = document.createElement('img')
-        jsLogo.setAttribute('src', 'https://i0.wp.com/blog.canadianwebhosting.com/wp-content/uploads/2018/04/javascript-logo.png?ssl=1')
-        jsLogo.setAttribute('id', 'logo')
-        imgDiv.appendChild(jsLogo)
-
-
-
-        var headingDiv = document.createElement('div')
-        headingDiv.setAttribute('id', 'heading_div')
-        startingDiv.appendChild(headingDiv)
-
-        var heading = document.createElement('p')
-        heading.setAttribute('class', 'quiz_heading')
-        var headingText = document.createTextNode('JavaScript Quiz')
-        heading.appendChild(headingText)
-        headingDiv.appendChild(heading)
-
-
-        var mainDiv = document.createElement('div')
-        startingDiv.appendChild(mainDiv)
-
-
-        // Online Test heading
-        var middleHeading = document.createElement('p')
-        middleHeading.setAttribute('class', 'middle_heading')
-        var middleHeadingText = document.createTextNode('Online Test: JavaScript Programming Test')
-        middleHeading.appendChild(middleHeadingText)
-        mainDiv.appendChild(middleHeading)
-
-
-        // instructions
-        var instructionsHeading = document.createElement('p')
-        instructionsHeading.setAttribute('id', 'instructions_heading')
-        var instructionsHeadingText = document.createTextNode('Instructions:')
-        instructionsHeading.appendChild(instructionsHeadingText)
-        mainDiv.appendChild(instructionsHeading)
-
-        //number of questions
-        var numberOfQuestions = document.createElement('p')
-        numberOfQuestions.setAttribute('class', 'questions_and_time')
-        var numberOfQuestionsText = document.createTextNode('Total Number of Questions: ')
-        numberOfQuestions.appendChild(numberOfQuestionsText)
-        mainDiv.appendChild(numberOfQuestions)
-
-        var questionsNumber = document.createElement('span')
-        questionsNumber.setAttribute('class', 'minutes_and_questionsNumber')
-        var questionsNumberText = document.createTextNode('30')
-        questionsNumber.appendChild(questionsNumberText)
-        numberOfQuestions.appendChild(questionsNumber)
-
-
-        var time = document.createElement('p')
-        time.setAttribute('class', 'questions_and_time')
-        var timeText = document.createTextNode('Time alloted: ')
-        time.appendChild(timeText)
-        mainDiv.appendChild(time)
-
-        var minutes = document.createElement('span')
-        minutes.setAttribute('class', 'minutes_and_questionsNumber')
-        var minutesText = document.createTextNode('30 minutes')
-        minutes.appendChild(minutesText)
-        time.appendChild(minutes)
-
-        var marks = document.createElement('p')
-        marks.setAttribute('class', 'marks')
-        var marksText = document.createTextNode('Each question carry 5 marks, no negative marking')
-        marks.appendChild(marksText)
-        mainDiv.appendChild(marks)
-
-
-
-        var inputField = document.createElement("input")
-        inputField.setAttribute('type', 'text')
-        inputField.setAttribute('placeholder', 'Enter your name')
-        inputField.setAttribute('id', 'name_field')
-        mainDiv.appendChild(inputField)
-
-
-        var breakLine = document.createElement('br')
-        mainDiv.appendChild(breakLine)
-
-
-
-        var noteHeading = document.createElement('p')
-        noteHeading.setAttribute('id', 'note_heading')
-        var noteHeadingText = document.createTextNode('Note:')
-        noteHeading.appendChild(noteHeadingText)
-        mainDiv.appendChild(noteHeading)
-
-
-        var note1 = document.createElement('p')
-        note1.setAttribute('class', 'note')
-        var note1Text = document.createTextNode('Test will be submitted after time is Expired.')
-        note1.appendChild(note1Text)
-        mainDiv.appendChild(note1)
-
-        var note2 = document.createElement('p')
-        note2.setAttribute('class', 'note')
-        var note2Text = document.createTextNode('Do not refresh the Page.')
-        note2.appendChild(note2Text)
-        mainDiv.appendChild(note2)
-
-        var btnDiv = document.createElement('div')
-        btnDiv.setAttribute('id', 'btn_div')
-        var btn = document.createElement('button')
-        btn.setAttribute('id', 'start_quiz_btn')
-        var btnText = document.createTextNode("Start quiz")
-        btn.setAttribute('onclick', 'renderQuestion(0), time()')
-        btn.appendChild(btnText)
-        btnDiv.appendChild(btn)
-        mainDiv.appendChild(btnDiv)
-
-    } catch (error) {
-        console.log(error)
-    }
+    var startingDiv = document.getElementById('starting')
+    startingDiv.style.display = "block"
 }
 
 
@@ -610,7 +457,7 @@ function checkAnswer(index, answer) {
 }
 
 function result() {
-    document.getElementById('questions_div').remove();
+    document.getElementById('render_questions').remove();
     clearInterval(interval)
 
     var myMinutes = 1 - minutes
