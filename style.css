@@ -271,18 +271,7 @@ body {
     border: none;
 }
 
-.testing {
-    background-color: green;
-}
 
 #time {
     display: none;
 }
-
-#two_options_questions {
-    display: none;
-}
-
-/* #four_options_questions {
-    display: none;
-} */

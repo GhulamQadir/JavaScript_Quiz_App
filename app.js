@@ -676,12 +676,8 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
             rdBtn.parentElement.style.backgroundColor = "red"
         }
 
-        for (var i = 0; i < questions.length; i++) {
-            if (rdBtn.value === questions[i].correctAnswer) {
-                rdBtn.parentElement.style.backgroundColor = "green"
-
-
-            }
+        if (rdBtn.value === questions[currentQuestionIndex].correctAnswer) {
+            rdBtn.parentElement.style.backgroundColor = "green"
         }
     }
 }
