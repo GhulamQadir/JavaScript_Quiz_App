@@ -154,16 +154,16 @@ var questions = [
         correctAnswer: "False"
     },
 
-    // {
-    //     question: "Which of the following is correct to write Hello World on the web page?",
-    //     options: [
-    //         'System.out.println("Hello World")',
-    //         'document.write("Hello World")',
-    //         'response.write("Hello World")',
-    //         'print("Hello World")'
-    //     ],
-    //     correctAnswer: 'document.write("Hello World")'
-    // },
+    {
+        question: "Which of the following is correct to write Hello World on the web page?",
+        options: [
+            'System.out.println("Hello World")',
+            'document.write("Hello World")',
+            'response.write("Hello World")',
+            'print("Hello World")'
+        ],
+        correctAnswer: 'document.write("Hello World")'
+    },
 
     // {
     //     question: "How do you round the number 7.25, to the nearest integer?",
@@ -680,15 +680,12 @@ function usersAnswers() {
 
                 console.log(usersSelectedAnswers)
                 usersSelectedAnswers.splice(j, 1);
+                options[i].parentElement.style.backgroundColor = "red"
 
                 for (var b = 0; b < questions.length; b++) {
                     if (options[i].value === questions[b].correctAnswer) {
                         options[i].parentElement.style.backgroundColor = "green"
                     }
-                    //     if (options[i].value !== correctAnswers[b]) {
-                    //         options[i].parentElement.style.backgroundColor = "red"
-                    //         correctAnswers.splice(b, 1)
-                    //     }
                 }
             }
         }
