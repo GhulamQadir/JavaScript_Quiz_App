@@ -660,41 +660,27 @@ function result() {
             checkCorrectAnswer([radioBtn1, radioBtn2, radioBtn3, radioBtn4], i);
         }
 
-        // usersAnswers()
     }
 
 }
 
 function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
+    var checkedValue = null
     for (var index = 0; index < rdBtns.length; index++) {
         var rdBtn = rdBtns[index];
         rdBtn.checked = rdBtn.value === usersSelectedAnswers[currentQuestionIndex];
+        checkedValue = rdBtn.checked
         rdBtn.disabled = true
-    }
-    console.log(usersSelectedAnswers)
-}
 
-function usersAnswers() {
-    var options = document.getElementsByClassName('options')
+        if (rdBtn.checked === true) {
+            rdBtn.parentElement.style.backgroundColor = "red"
+        }
+
+        for (var i = 0; i < questions.length; i++) {
+            if (rdBtn.value === questions[i].correctAnswer) {
+                rdBtn.parentElement.style.backgroundColor = "green"
 
 
-    for (var i = 0; i < options.length; i++) {
-        options[i].disabled = true
-
-        for (var j = 0; j < usersSelectedAnswers.length; j++) {
-            if (options[i].value === usersSelectedAnswers[j]) {
-                options[i].checked = true
-                options[i].disabled = true
-
-                console.log(usersSelectedAnswers)
-                usersSelectedAnswers.splice(j, 1);
-                options[i].parentElement.style.backgroundColor = "red"
-
-                for (var b = 0; b < questions.length; b++) {
-                    if (options[i].value === questions[b].correctAnswer) {
-                        options[i].parentElement.style.backgroundColor = "green"
-                    }
-                }
             }
         }
     }
