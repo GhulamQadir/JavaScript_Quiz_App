@@ -154,16 +154,16 @@ var questions = [
         correctAnswer: "False"
     },
 
-    {
-        question: "Which of the following is correct to write Hello World on the web page?",
-        options: [
-            'System.out.println("Hello World")',
-            'document.write("Hello World")',
-            'response.write("Hello World")',
-            'print("Hello World")'
-        ],
-        correctAnswer: 'document.write("Hello World")'
-    },
+    // {
+    //     question: "Which of the following is correct to write Hello World on the web page?",
+    //     options: [
+    //         'System.out.println("Hello World")',
+    //         'document.write("Hello World")',
+    //         'response.write("Hello World")',
+    //         'print("Hello World")'
+    //     ],
+    //     correctAnswer: 'document.write("Hello World")'
+    // },
 
     // {
     //     question: "How do you round the number 7.25, to the nearest integer?",
@@ -558,6 +558,8 @@ function result() {
 
             var breakLine2 = document.createElement('br')
             resultDiv.appendChild(breakLine2)
+            checkCorrectAnswer([radioBtn1, radioBtn2], i);
+
         }
         if (questions[i].options.length === 4) {
 
@@ -655,18 +657,25 @@ function result() {
             var breakLine4 = document.createElement('br')
             resultDiv.appendChild(breakLine4)
 
+            checkCorrectAnswer([radioBtn1, radioBtn2, radioBtn3, radioBtn4], i);
         }
 
-        usersAnswers()
+        // usersAnswers()
     }
 
 }
 
-
+function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
+    for (var index = 0; index < rdBtns.length; index++) {
+        var rdBtn = rdBtns[index];
+        rdBtn.checked = rdBtn.value === usersSelectedAnswers[currentQuestionIndex];
+        rdBtn.disabled = true
+    }
+    console.log(usersSelectedAnswers)
+}
 
 function usersAnswers() {
     var options = document.getElementsByClassName('options')
-    var checkedValue = null
 
 
     for (var i = 0; i < options.length; i++) {
@@ -676,7 +685,6 @@ function usersAnswers() {
             if (options[i].value === usersSelectedAnswers[j]) {
                 options[i].checked = true
                 options[i].disabled = true
-                checkedValue = options[i].value
 
                 console.log(usersSelectedAnswers)
                 usersSelectedAnswers.splice(j, 1);
