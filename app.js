@@ -151,7 +151,7 @@ var questions = [
             "True",
             "False",
         ],
-        correctAnswer: "False"
+        correctAnswer: "True"
     },
 
     // {
@@ -691,30 +691,14 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
 var minutes = 1;
 var seconds = 60;
 
-
-
-
-
 function time() {
     var getName = document.getElementById('name_field')
     if (getName.value === "") {
     }
     else {
         var timeDiv = document.getElementById('time')
+        timeDiv.style.display = "block"
 
-        var minutes = document.createElement('span')
-        minutes.setAttribute('id', 'minutes')
-        var minutesText = document.createTextNode('2:')
-        minutes.appendChild(minutesText)
-        timeDiv.appendChild(minutes)
-
-
-        // seconds
-        var seconds = document.createElement('span')
-        seconds.setAttribute('id', 'seconds')
-        var secondsText = document.createTextNode('00')
-        seconds.appendChild(secondsText)
-        timeDiv.appendChild(seconds)
         startTimer()
     }
 }
