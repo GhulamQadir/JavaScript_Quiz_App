@@ -12,9 +12,9 @@ body {
     margin-top: 25px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     #starting {
-        width: 70%;
+        width: 80%;
     }
 }
 
@@ -31,9 +31,15 @@ body {
 @media screen and (max-width: 800px) {
     #render_questions {
         width: 80%;
+
     }
 }
 
+@media screen and (max-width: 550px) {
+    #render_questions {
+        width: 95%;
+    }
+}
 
 #img_div {
     display: inline-block;
@@ -142,12 +148,6 @@ body {
     color: rgb(104, 103, 103);
 }
 
-
-
-
-
-
-
 /* The Modal (background) */
 .modal {
     display: none;
@@ -238,6 +238,7 @@ body {
     font-family: sans-serif;
 
 }
+
 
 .next_btn_div {
     display: flex;
