@@ -226,12 +226,27 @@ var usersSelectedAnswers = []
 var correctAnswers = []
 var renderQuestions = document.getElementById('render_questions')
 var questionsDiv = document.getElementById('questions_div')
+var getModal = document.getElementById("myModal");
 
-function closeErrorModal() {
-    var getModal = document.getElementById("myModal");
-    getModal.style.display = "none";
+
+
+
+var closeModal;
+function showModal() {
+    getModal.style.display = "block";
+
+    
+    closeModal = function closeErrorModal() {
+        getModal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == getModal) {
+            getModal.style.display = "none";
+        }
+    }
 }
-
 
 function renderQuestion(e) {
 
@@ -239,15 +254,8 @@ function renderQuestion(e) {
     var starting = document.getElementById('starting')
     if (getName.value === "") {
 
-        var getModal = document.getElementById("myModal");
-        getModal.style.display = "block";
+        showModal()
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == getModal) {
-                getModal.style.display = "none";
-            }
-        }
     }
     else {
         userName = getName.value
