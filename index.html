@@ -65,16 +65,14 @@
         </div>
 
 
-        <!-- show error model -->
-        <div id="myModal" class="modal">
+        <!-- show error model (enter name) -->
+        <div id="enter_name_modal" class="modal">
             <div class="modal-content">
-                <div id="ok_btn_div">
-                    <span class="close_modal_btn" onclick="closeModal()">&times;</span>
-                </div>
-                <p class="modal_error">Please enter your name</p>
+                <span class="close_modal_btn" onclick="closeModal()">&times;</span>
+                <p id="modal_error">Please enter your name</p>
             </div>
         </div>
-        <!-- show error model ends here-->
+        <!-- error model ends here-->
 
     </div>
     <!-- starting div work ends here -->
@@ -89,7 +87,16 @@
         </div>
         <!-- time div ends -->
 
+        <!-- questions div -->
         <div id="questions_div">
+        </div>
+
+        <!-- select option modal -->
+        <div id="select_option_modal" class="modal">
+            <div class="modal-content">
+                <span class="close_modal_btn" onclick="closeModal()">&times;</span>
+                <p id="modal_error">Please select any one option</p>
+            </div>
         </div>
     </div>
 

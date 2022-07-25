@@ -117,8 +117,7 @@ body {
     margin-top: 10px;
 }
 
-#btn_div,
-#ok_btn_div {
+#btn_div {
     display: flex;
     justify-content: right;
     align-items: right;
@@ -168,10 +167,10 @@ body {
 /* Modal Content */
 .modal-content {
     position: relative;
-    background-color: red;
+    background-color: #db3c30;
     color: white;
     margin: auto;
-    padding: 0;
+    padding: 10px;
     border: 1px solid #888;
     width: 40%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -213,16 +212,26 @@ body {
     }
 }
 
+#modal_error {
+    font-size: 17px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .close_modal_btn {
     margin-right: 8px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    display: inline;
+    float: right;
 }
 
-.modal_error {
-    display: inline;
+.close_modal_btn:hover {
+    color: black;
 }
+
+
 
 .question_num {
     font-size: 20px;

@@ -226,27 +226,32 @@ var usersSelectedAnswers = []
 var correctAnswers = []
 var renderQuestions = document.getElementById('render_questions')
 var questionsDiv = document.getElementById('questions_div')
-var getModal = document.getElementById("myModal");
+var nameModal = document.getElementById("enter_name_modal");
+var optionModal = document.getElementById("select_option_modal");
 
 
 
-
+// error modal
 var closeModal;
-function showModal() {
-    getModal.style.display = "block";
+function showErrorModal() {
+    nameModal.style.display = "block";
+    optionModal.style.display = "block"
 
-    
     closeModal = function closeErrorModal() {
-        getModal.style.display = "none";
+        nameModal.style.display = "none";
+        optionModal.style.display = "none"
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
-        if (event.target == getModal) {
-            getModal.style.display = "none";
+        if (event.target == nameModal || event.target == optionModal) {
+            nameModal.style.display = "none";
+            optionModal.style.display = "none"
         }
     }
 }
+
+
 
 function renderQuestion(e) {
 
@@ -254,7 +259,7 @@ function renderQuestion(e) {
     var starting = document.getElementById('starting')
     if (getName.value === "") {
 
-        showModal()
+        showErrorModal()
 
     }
     else {
@@ -471,7 +476,8 @@ function nextQuestion() {
     }
 
 
-    alert("Please select any 1 option")
+    // alert("Please select any 1 option")
+    showErrorModal()
     return false
 }
 
