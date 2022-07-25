@@ -290,12 +290,8 @@ body {
 
 .separate_question_div {
     border: 1px solid black;
-    /* margin: 0px; */
 }
 
-.correct_answer {
-    margin: 5px;
-}
 
 #result_div {
     display: none;
@@ -304,4 +300,16 @@ body {
 .result_questions {
     font-size: 17px;
     font-family: sans-serif;
+}
+
+.wrong_answer {
+    background-color: rgb(225, 141, 141);
+    color: white;
+    margin: 5px;
+}
+
+.correct_answer {
+    background-color: lightgreen;
+    color: white;
+    margin: 5px;
 }

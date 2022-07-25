@@ -557,6 +557,7 @@ function result() {
 
 
             var div1 = document.createElement('div')
+            div1.setAttribute('class', 'result_options_div')
             var radioBtn1 = document.createElement('input')
             radioBtn1.setAttribute('type', 'checkbox')
             radioBtn1.setAttribute('name', 'selectBtn')
@@ -572,6 +573,7 @@ function result() {
 
 
             var div2 = document.createElement('div')
+            div2.setAttribute('class', 'result_options_div')
             var radioBtn2 = document.createElement('input')
             radioBtn2.setAttribute('type', 'checkbox')
             radioBtn2.setAttribute('name', 'selectBtn')
@@ -588,8 +590,6 @@ function result() {
 
             var correctAnswer = document.createElement('p')
             correctAnswer.setAttribute('class', 'correct_answer')
-            // var correctAnswerText = document.createTextNode(`Correct answer: ${questions[i].correctAnswer}`)
-            // correctAnswer.appendChild(correctAnswerText)
             separateQuestionDiv.appendChild(correctAnswer)
 
 
@@ -612,6 +612,7 @@ function result() {
 
 
             var div1 = document.createElement('div')
+            div1.setAttribute('class', 'result_options_div')
             var radioBtn1 = document.createElement('input')
             radioBtn1.setAttribute('type', 'checkbox')
             radioBtn1.setAttribute('name', 'selectBtn')
@@ -627,6 +628,7 @@ function result() {
 
 
             var div2 = document.createElement('div')
+            div2.setAttribute('class', 'result_options_div')
             var radioBtn2 = document.createElement('input')
             radioBtn2.setAttribute('type', 'checkbox')
             radioBtn2.setAttribute('name', 'selectBtn')
@@ -642,6 +644,7 @@ function result() {
 
 
             var div3 = document.createElement('div')
+            div3.setAttribute('class', 'result_options_div')
             var radioBtn3 = document.createElement('input')
             radioBtn3.setAttribute('type', 'checkbox')
             radioBtn3.setAttribute('name', 'selectBtn')
@@ -657,6 +660,7 @@ function result() {
 
 
             var div4 = document.createElement('div')
+            div4.setAttribute('class', 'result_options_div')
             var radioBtn4 = document.createElement('input')
             radioBtn4.setAttribute('type', 'checkbox')
             radioBtn4.setAttribute('name', 'selectBtn')
@@ -673,8 +677,6 @@ function result() {
 
             var correctAnswer = document.createElement('p')
             correctAnswer.setAttribute('class', 'correct_answer')
-            // var correctAnswerText = document.createTextNode(`Correct answer: ${questions[i].correctAnswer}`)
-            // correctAnswer.appendChild(correctAnswerText)
             separateQuestionDiv.appendChild(correctAnswer)
 
 
@@ -695,12 +697,12 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
             rdBtn.parentElement.style.backgroundColor = "red"
             if (rdBtn.value === questions[currentQuestionIndex].correctAnswer) {
                 rdBtn.parentElement.parentElement.lastChild.innerHTML = "Your answer is correct"
-                rdBtn.parentElement.parentElement.lastChild.style.backgroundColor = "green"
+                rdBtn.parentElement.parentElement.lastChild.style.className = "correct_answer"
 
             }
             else if (rdBtn.value !== questions[currentQuestionIndex].correctAnswer) {
                 rdBtn.parentElement.parentElement.lastChild.innerHTML = "Your answer is wrong"
-                rdBtn.parentElement.parentElement.lastChild.style.backgroundColor = "red"
+                rdBtn.parentElement.parentElement.lastChild.className = "wrong_answer"
             }
         }
         if (rdBtn.value === questions[currentQuestionIndex].correctAnswer) {
