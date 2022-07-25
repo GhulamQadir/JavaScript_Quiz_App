@@ -11,26 +11,26 @@ var questions = [
         correctAnswer: "script"
     },
 
-    {
-        question: "How to write an IF statement in JavaScript?",
-        options: [
-            "if(i==5)",
-            "if i = 5",
-            "if i = 5 then",
-            "if i == 5 then"
-        ],
-        correctAnswer: "if(i==5)"
-    },
+    // {
+    //     question: "How to write an IF statement in JavaScript?",
+    //     options: [
+    //         "if(i==5)",
+    //         "if i = 5",
+    //         "if i = 5 then",
+    //         "if i == 5 then"
+    //     ],
+    //     correctAnswer: "if(i==5)"
+    // },
 
-    {
-        question: "The external JavaScript file must contain the <script> tag.",
-        options: [
-            "True",
-            "False",
+    // {
+    //     question: "The external JavaScript file must contain the <script> tag.",
+    //     options: [
+    //         "True",
+    //         "False",
 
-        ],
-        correctAnswer: "False"
-    },
+    //     ],
+    //     correctAnswer: "False"
+    // },
 
     // {
     //     question: "How to write an IF statement for executing some code if 'i' is NOT equal to 5?",
@@ -296,9 +296,6 @@ function renderQuestion(e) {
             questionsDiv.appendChild(option1Div)
 
 
-            var breakLine1 = document.createElement('br')
-            questionsDiv.appendChild(breakLine1)
-
             var option2Div = document.createElement('div')
             option2Div.setAttribute('class', 'optionsDiv')
             var radioBtn2 = document.createElement('input')
@@ -310,9 +307,6 @@ function renderQuestion(e) {
             option2Div.appendChild(radioBtn2)
             option2Div.appendChild(option2)
             questionsDiv.appendChild(option2Div)
-
-            var breakLine2 = document.createElement('br')
-            questionsDiv.appendChild(breakLine2)
 
 
             var nextBtnDiv = document.createElement('div')
@@ -352,9 +346,6 @@ function renderQuestion(e) {
             option1Div.appendChild(option1)
             questionsDiv.appendChild(option1Div)
 
-            var breakLine1 = document.createElement('br')
-            questionsDiv.appendChild(breakLine1)
-
             var option2Div = document.createElement('div')
             option2Div.setAttribute('class', 'optionsDiv')
             var radioBtn2 = document.createElement('input')
@@ -367,8 +358,6 @@ function renderQuestion(e) {
             option2Div.appendChild(option2)
             questionsDiv.appendChild(option2Div)
 
-            var breakLine2 = document.createElement('br')
-            questionsDiv.appendChild(breakLine2)
 
             var option3Div = document.createElement('div')
             option3Div.setAttribute('class', 'optionsDiv')
@@ -382,9 +371,6 @@ function renderQuestion(e) {
             option3Div.appendChild(option3)
             questionsDiv.appendChild(option3Div)
 
-            var breakLine3 = document.createElement('br')
-            questionsDiv.appendChild(breakLine3)
-
 
             var option4Div = document.createElement('div')
             option4Div.setAttribute('class', 'optionsDiv')
@@ -397,9 +383,6 @@ function renderQuestion(e) {
             option4Div.appendChild(radioBtn4)
             option4Div.appendChild(option4)
             questionsDiv.appendChild(option4Div)
-
-            var breakLine4 = document.createElement('br')
-            questionsDiv.appendChild(breakLine4)
 
 
             var nextBtnDiv = document.createElement('div')
@@ -491,7 +474,6 @@ function checkAnswer(index, answer) {
 
 function result() {
     document.getElementById('render_questions').remove();
-    document.body.style.backgroundColor = "white"
     clearInterval(interval)
 
     var myMinutes = 1 - minutes
@@ -511,30 +493,28 @@ function result() {
     renderQuestions.style.display = 'none'
     resultDiv.style.display = 'block'
 
-    var completeHeading = document.createElement('h2')
-    var completeHeadingText = document.createTextNode("Completed!")
-    completeHeading.appendChild(completeHeadingText)
+    var resultProgress = document.createElement('div')
+    resultProgress.setAttribute('id', 'result_progress')
+    resultDiv.appendChild(resultProgress)
 
     var result = document.createElement('h2')
     var resultText = document.createTextNode(`${userName}, You got ${score} out of ${100}`)
     result.appendChild(resultText)
 
-
-    resultDiv.appendChild(completeHeading)
-    resultDiv.appendChild(result)
+    resultProgress.appendChild(result)
 
 
     var timeElapsed = document.createElement('h3')
     timeElapsed.setAttribute('class', 'time_elapsed')
     var timeElapsedText = document.createTextNode('Time Elapsed: ')
     timeElapsed.appendChild(timeElapsedText)
-    resultDiv.appendChild(timeElapsed)
+    resultProgress.appendChild(timeElapsed)
 
     var duration = document.createElement('span')
     duration.setAttribute('class', 'time_elapsed')
     var durationText = document.createTextNode(`${myMinutes}:${mySeconds}`)
     duration.appendChild(durationText)
-    resultDiv.appendChild(duration)
+    resultProgress.appendChild(duration)
 
 
 
@@ -548,9 +528,15 @@ function result() {
             separateQuestionDiv.setAttribute('class', 'separate_question_div')
             resultDiv.appendChild(separateQuestionDiv)
 
+            var questionNum = document.createElement('p')
+            questionNum.setAttribute('class', 'result_question_num')
+            var questionNumText = document.createTextNode(`Question ${i + 1}`)
+            questionNum.appendChild(questionNumText)
+            separateQuestionDiv.appendChild(questionNum)
+
             var question = document.createElement('p')
             question.setAttribute('class', 'result_questions')
-            var questionText = document.createTextNode(`Q:${i + 1})${questions[i].question}`)
+            var questionText = document.createTextNode(questions[i].question)
             question.appendChild(questionText)
             separateQuestionDiv.appendChild(question)
 
@@ -603,9 +589,15 @@ function result() {
             separateQuestionDiv.setAttribute('class', 'separate_question_div')
             resultDiv.appendChild(separateQuestionDiv)
 
+            var questionNum = document.createElement('p')
+            questionNum.setAttribute('class', 'result_question_num')
+            var questionNumText = document.createTextNode(`Question ${i + 1}`)
+            questionNum.appendChild(questionNumText)
+            separateQuestionDiv.appendChild(questionNum)
+
             var question = document.createElement('p')
             question.setAttribute('class', 'result_questions')
-            var questionText = document.createTextNode(`Q:${i + 1})${questions[i].question}`)
+            var questionText = document.createTextNode(questions[i].question)
             question.appendChild(questionText)
             separateQuestionDiv.appendChild(question)
 
