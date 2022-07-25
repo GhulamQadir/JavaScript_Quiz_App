@@ -287,10 +287,6 @@ body {
     padding: 5px 5px 115px 5px;
 }
 
-.time_elapsed {
-    color: white;
-    display: inline;
-}
 
 .next_question_btn {
     height: 35px;
@@ -344,6 +340,19 @@ body {
 #result_progress {
     width: 40%;
     margin: auto;
-    padding: 5px 5px 10px 10px;
     border-radius: 8px;
+    margin-top: 20px;
+}
+
+#user_name {
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+    font-family: sans-serif;
+    margin-bottom: 8px;
+}
+
+#obtained_marks {
+    font-size: 22px !important;
+    font-weight: 500 !important;
 }

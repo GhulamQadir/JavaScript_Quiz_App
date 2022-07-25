@@ -497,24 +497,31 @@ function result() {
     resultProgress.setAttribute('id', 'result_progress')
     resultDiv.appendChild(resultProgress)
 
-    var result = document.createElement('h2')
-    var resultText = document.createTextNode(`${userName}, You got ${score} out of ${100}`)
-    result.appendChild(resultText)
+    var result = document.createElement('p')
+    result.setAttribute('id', 'user_name')
+    var name = document.createTextNode(`${userName}`)
+    result.appendChild(name)
+
+    var obtainedMarks = document.createElement('span')
+    obtainedMarks.setAttribute('id', 'obtained_marks')
+    var obtainedMarksText = document.createTextNode(`, You got ${score} out of 100`)
+    obtainedMarks.appendChild(obtainedMarksText)
+    result.appendChild(obtainedMarks)
 
     resultProgress.appendChild(result)
 
 
-    var timeElapsed = document.createElement('h3')
-    timeElapsed.setAttribute('class', 'time_elapsed')
+    var timeElapsed = document.createElement('p')
+    timeElapsed.setAttribute('id', 'time_elapsed')
     var timeElapsedText = document.createTextNode('Time Elapsed: ')
     timeElapsed.appendChild(timeElapsedText)
     resultProgress.appendChild(timeElapsed)
 
     var duration = document.createElement('span')
-    duration.setAttribute('class', 'time_elapsed')
+    duration.setAttribute('id', 'completion_time')
     var durationText = document.createTextNode(`${myMinutes}:${mySeconds}`)
     duration.appendChild(durationText)
-    resultProgress.appendChild(duration)
+    timeElapsed.appendChild(duration)
 
 
 
