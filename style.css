@@ -321,13 +321,13 @@ body {
 .wrong_answer {
     background-color: rgb(225, 141, 141);
     color: white;
-    margin: 5px;
+    margin-top: 5px;
 }
 
 .correct_answer {
     background-color: lightgreen;
     color: white;
-    margin: 5px;
+    margin-top: 5px;
 }
 
 .result_question_num {
@@ -341,7 +341,12 @@ body {
     width: 40%;
     margin: auto;
     border-radius: 8px;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 19px;
+    font-weight: 500;
 }
 
 @media screen and (max-width: 700px) {
@@ -352,19 +357,55 @@ body {
 
 @media screen and (max-width: 470px) {
     #result_progress {
-        width: 75%;
+        width: 80%;
     }
 }
 
 #user_name {
-    font-size: 25px;
-    font-weight: 600;
-    color: white;
-    font-family: sans-serif;
-    margin-bottom: 8px;
+    margin: 0px;
+    padding-bottom: 5px;
 }
 
 #obtained_marks {
-    font-size: 22px !important;
+    font-size: 17px !important;
     font-weight: 500 !important;
+}
+
+#percentage {
+    margin: 0px;
+    padding-bottom: 5px;
+}
+
+#percent {
+    font-size: 17px !important;
+    font-weight: 500 !important;
+}
+
+
+#result_remarks {
+    margin: 0px;
+    padding-bottom: 5px;
+}
+
+#remarks {
+    font-size: 17px !important;
+    font-weight: 500 !important;
+}
+
+
+#time_elapsed {
+    margin: 0px;
+}
+
+#completion_time {
+    font-size: 17px !important;
+    font-weight: 500 !important;
+}
+
+
+#quiz_result_heading {
+    font-size: 18px;
+    font-family: sans-serif;
+    margin: 0px 5px 10px 10px;
+    color: white
 }

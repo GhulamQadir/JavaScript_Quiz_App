@@ -515,8 +515,15 @@ function result() {
     // percentage
     var getPercentage = (score / 100) * 100
     var percentage = document.createElement('p')
-    var percentageHeading = document.createTextNode(`Percentage: ${getPercentage}%`)
+    percentage.setAttribute('id', 'percentage')
+    var percentageHeading = document.createTextNode("Percentage: ")
     percentage.appendChild(percentageHeading)
+
+    var percent = document.createElement('span')
+    percent.setAttribute('id', 'percent')
+    var percentText = document.createTextNode(`${getPercentage}%`)
+    percent.appendChild(percentText)
+    percentage.appendChild(percent)
     resultProgress.appendChild(percentage)
 
 
@@ -542,9 +549,17 @@ function result() {
 
     // Remarks
     var resultRemarks = document.createElement('p')
-    var remarksText = document.createTextNode(`Remarks: ${remarks}`)
-    resultRemarks.appendChild(remarksText)
+    resultRemarks.setAttribute('id', 'result_remarks')
+    var remarksHeading = document.createTextNode(`Remarks: `)
+    resultRemarks.appendChild(remarksHeading)
     resultProgress.appendChild(resultRemarks)
+
+    var remarksOfQuiz = document.createElement('span')
+    remarksOfQuiz.setAttribute('id', 'remarks')
+    var remarksText = document.createTextNode(remarks)
+    remarksOfQuiz.appendChild(remarksText)
+    resultRemarks.appendChild(remarksOfQuiz)
+
 
 
     var timeElapsed = document.createElement('p')
@@ -561,6 +576,11 @@ function result() {
 
 
 
+    var quizResultHeading = document.createElement('p')
+    quizResultHeading.setAttribute('id', 'quiz_result_heading')
+    var quizResultHeadingText = document.createTextNode('Quiz Result')
+    quizResultHeading.appendChild(quizResultHeadingText)
+    resultDiv.appendChild(quizResultHeading)
 
     // questions checking
     for (var i = 0; i < questions.length; i++) {
