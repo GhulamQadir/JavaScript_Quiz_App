@@ -230,7 +230,7 @@ var renderQuestions = document.getElementById('render_questions')
 var questionsDiv = document.getElementById('questions_div')
 var nameModal = document.getElementById("enter_name_modal");
 var optionModal = document.getElementById("select_option_modal");
-
+var questionsCompletedModal = document.getElementById('questions_completed_modal')
 
 
 // error modal
@@ -252,6 +252,28 @@ function showErrorModal() {
         }
     }
 }
+
+
+
+// questions completed modal
+// var closeModal;
+function quizCompletedModal() {
+    questionsCompletedModal.style.display = "block"
+    // closeModal = function closeErrorModal() {
+    //     nameModal.style.display = "none";
+    //     optionModal.style.display = "none"
+    // }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == nameModal || event.target == optionModal) {
+            questionsCompletedModal.style.display = "none"
+        }
+    }
+}
+
+
+
 
 
 
@@ -435,7 +457,7 @@ function nextQuestion() {
 
 
 
-                alert("completed")
+
                 result();
 
                 return;
@@ -461,7 +483,6 @@ function nextQuestion() {
     }
 
 
-    // alert("Please select any 1 option")
     showErrorModal()
     return false
 }
@@ -750,11 +771,11 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
 
 
 
-        if (!(rdBtn.checked === true)) {
+
+        if (rdBtn.checked != true) {
             rdBtn.parentElement.parentElement.lastChild.innerHTML = "No option selected"
             rdBtn.parentElement.parentElement.lastChild.className = "no_option_selected"
         }
-
 
         if (rdBtn.checked === true) {
             rdBtn.parentElement.style.backgroundColor = "#ffb3b3"
@@ -768,6 +789,7 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
                 rdBtn.parentElement.parentElement.lastChild.className = "wrong_answer"
             }
 
+
         }
         if (rdBtn.value === questions[currentQuestionIndex].correctAnswer) {
             rdBtn.parentElement.style.backgroundColor = "lightgreen"
@@ -777,7 +799,7 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
 
 
 
-var minutes = 0;
+var minutes = 9;
 var seconds = 60;
 
 function time() {

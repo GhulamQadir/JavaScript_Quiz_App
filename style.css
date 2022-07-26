@@ -442,3 +442,7 @@ body {
         font-size: 14px;
     }
 }
+
+.close_completion_modal {
+    display: none;
+}
