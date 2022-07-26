@@ -224,6 +224,8 @@ var answer = ""
 var userName = ""
 var usersSelectedAnswers = []
 var correctAnswers = []
+var getPercentage = (score / 100) * 100
+var remarks = ""
 var renderQuestions = document.getElementById('render_questions')
 var questionsDiv = document.getElementById('questions_div')
 var nameModal = document.getElementById("enter_name_modal");
@@ -476,7 +478,7 @@ function result() {
     document.getElementById('render_questions').remove();
     clearInterval(interval)
 
-    var myMinutes = 1 - minutes
+    var myMinutes = 9 - minutes
     var mySeconds = 60 - seconds
 
     if (mySeconds < 10) {
@@ -507,8 +509,42 @@ function result() {
     var obtainedMarksText = document.createTextNode(`, You got ${score} out of 100`)
     obtainedMarks.appendChild(obtainedMarksText)
     result.appendChild(obtainedMarks)
-
     resultProgress.appendChild(result)
+
+
+    // percentage
+    var getPercentage = (score / 100) * 100
+    var percentage = document.createElement('p')
+    var percentageHeading = document.createTextNode(`Percentage: ${getPercentage}%`)
+    percentage.appendChild(percentageHeading)
+    resultProgress.appendChild(percentage)
+
+
+
+    if (getPercentage >= 95) {
+        remarks = "Outstanding"
+    }
+    else if (getPercentage >= 90 && getPercentage < 95) {
+        remarks = "Excellent"
+    }
+    else if (getPercentage >= 80 && getPercentage < 90) {
+        remarks = "Very Good"
+    }
+    else if (getPercentage >= 65 && getPercentage < 80) {
+        remarks = "Good"
+    }
+    else if (getPercentage >= 50 && getPercentage < 65) {
+        remarks = "You need to practise alot"
+    }
+    else {
+        remarks = "Work Hard"
+    }
+
+    // Remarks
+    var resultRemarks = document.createElement('p')
+    var remarksText = document.createTextNode(`Remarks: ${remarks}`)
+    resultRemarks.appendChild(remarksText)
+    resultProgress.appendChild(resultRemarks)
 
 
     var timeElapsed = document.createElement('p')
@@ -712,7 +748,7 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
 
 
 
-var minutes = 1;
+var minutes = 9;
 var seconds = 60;
 
 function time() {
@@ -739,6 +775,9 @@ function timer() {
     getMinutes.innerHTML = `${minutes}:`
 
 
+    if (minutes < 10) {
+        getMinutes.innerHTML = `0${minutes}:`
+    }
     if (minutes === 0 && seconds === 0) {
         seconds = 0
         console.log(minutes)
