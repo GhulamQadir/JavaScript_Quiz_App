@@ -165,57 +165,57 @@ var questions = [
     //     correctAnswer: 'document.write("Hello World")'
     // },
 
-    // {
-    //     question: "How do you round the number 7.25, to the nearest integer?",
-    //     options: [
-    //         "Math.round(7.25)",
-    //         "Math.rnd(7.25)",
-    //         "round(7.25)",
-    //         "rnd(7.25)"
-    //     ],
-    //     correctAnswer: "Math.round(7.25)"
-    // },
+    {
+        question: "How do you round the number 7.25, to the nearest integer?",
+        options: [
+            "Math.round(7.25)",
+            "Math.rnd(7.25)",
+            "round(7.25)",
+            "rnd(7.25)"
+        ],
+        correctAnswer: "Math.round(7.25)"
+    },
 
-    // {
-    //     question: "Is it possible to declare a variable in Java Script along its type?",
-    //     options: [
-    //         "Yes",
-    //         "No"
-    //     ],
-    //     correctAnswer: "No"
-    // },
+    {
+        question: "Is it possible to declare a variable in Java Script along its type?",
+        options: [
+            "Yes",
+            "No"
+        ],
+        correctAnswer: "No"
+    },
 
 
-    // {
-    //     question: "Which of the following function of String object returns the character at the specified ind",
-    //     options: [
-    //         "concat()",
-    //         "charCodeAt()",
-    //         "charAt()",
-    //         "indexOf()"
-    //     ],
-    //     correctAnswer: "charAt()"
-    // },
+    {
+        question: "Which of the following function of String object returns the character at the specified ind",
+        options: [
+            "concat()",
+            "charCodeAt()",
+            "charAt()",
+            "indexOf()"
+        ],
+        correctAnswer: "charAt()"
+    },
 
-    // {
-    //     question: "What language defines the behavior of a web page?",
-    //     options: [
-    //         "HTML",
-    //         "CSS",
-    //         "JavaScript",
-    //         "XML"
-    //     ],
-    //     correctAnswer: "HTML"
-    // },
+    {
+        question: "What language defines the behavior of a web page?",
+        options: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "XML"
+        ],
+        correctAnswer: "HTML"
+    },
 
-    // {
-    //     question: "Is JavaScript case-sensitive?",
-    //     options: [
-    //         "Yes",
-    //         "No"
-    //     ],
-    //     correctAnswer: "Yes"
-    // },
+    {
+        question: "Is JavaScript case-sensitive?",
+        options: [
+            "Yes",
+            "No"
+        ],
+        correctAnswer: "Yes"
+    },
 
 ]
 
@@ -495,6 +495,7 @@ function result() {
     renderQuestions.style.display = 'none'
     resultDiv.style.display = 'block'
 
+
     var resultProgress = document.createElement('div')
     resultProgress.setAttribute('id', 'result_progress')
     resultDiv.appendChild(resultProgress)
@@ -749,7 +750,7 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
         rdBtn.disabled = true
 
         if (rdBtn.checked === true) {
-            rdBtn.parentElement.style.backgroundColor = "red"
+            rdBtn.parentElement.style.backgroundColor = "#ffb3b3"
             if (rdBtn.value === questions[currentQuestionIndex].correctAnswer) {
                 rdBtn.parentElement.parentElement.lastChild.innerHTML = "Your answer is correct"
                 rdBtn.parentElement.parentElement.lastChild.style.className = "correct_answer"
@@ -761,7 +762,7 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
             }
         }
         if (rdBtn.value === questions[currentQuestionIndex].correctAnswer) {
-            rdBtn.parentElement.style.backgroundColor = "green"
+            rdBtn.parentElement.style.backgroundColor = "lightgreen"
         }
     }
 }
