@@ -286,6 +286,16 @@ body {
     border: none;
 }
 
+.complete_btn {
+    height: 35px;
+    width: 85px;
+    font-size: 16;
+    padding: 5px;
+    background-color: #3774df;
+    color: white;
+    border: none;
+}
+
 
 #time {
     display: none;
@@ -446,3 +456,4 @@ body {
 .close_completion_modal {
     display: none;
 }
+

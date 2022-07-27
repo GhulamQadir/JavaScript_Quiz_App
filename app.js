@@ -11,26 +11,26 @@ var questions = [
         correctAnswer: "script"
     },
 
-    // {
-    //     question: "How to write an IF statement in JavaScript?",
-    //     options: [
-    //         "if(i==5)",
-    //         "if i = 5",
-    //         "if i = 5 then",
-    //         "if i == 5 then"
-    //     ],
-    //     correctAnswer: "if(i==5)"
-    // },
+    {
+        question: "How to write an IF statement in JavaScript?",
+        options: [
+            "if(i==5)",
+            "if i = 5",
+            "if i = 5 then",
+            "if i == 5 then"
+        ],
+        correctAnswer: "if(i==5)"
+    },
 
-    // {
-    //     question: "The external JavaScript file must contain the <script> tag.",
-    //     options: [
-    //         "True",
-    //         "False",
+    {
+        question: "The external JavaScript file must contain the <script> tag.",
+        options: [
+            "True",
+            "False",
 
-    //     ],
-    //     correctAnswer: "False"
-    // },
+        ],
+        correctAnswer: "False"
+    },
 
     // {
     //     question: "How to write an IF statement for executing some code if 'i' is NOT equal to 5?",
@@ -255,26 +255,6 @@ function showErrorModal() {
 
 
 
-// questions completed modal
-// var closeModal;
-function quizCompletedModal() {
-    questionsCompletedModal.style.display = "block"
-    // closeModal = function closeErrorModal() {
-    //     nameModal.style.display = "none";
-    //     optionModal.style.display = "none"
-    // }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == nameModal || event.target == optionModal) {
-            questionsCompletedModal.style.display = "none"
-        }
-    }
-}
-
-
-
-
 
 
 function renderQuestion(e) {
@@ -343,6 +323,33 @@ function renderQuestion(e) {
             nextBtnDiv.appendChild(nextBtn)
             questionsDiv.appendChild(nextBtnDiv)
 
+
+
+            if (e === questions.length - 1) {
+                var nextBtnDiv = document.createElement('div')
+                nextBtnDiv.setAttribute('class', 'next_btn_div')
+                var nextBtn = document.createElement('button')
+                nextBtn.setAttribute('class', 'complete_btn')
+                var nextBtnText = document.createTextNode("Complete")
+                nextBtn.setAttribute('onclick', 'nextQuestion()')
+                nextBtn.appendChild(nextBtnText)
+                nextBtnDiv.appendChild(nextBtn)
+                questionsDiv.appendChild(nextBtnDiv)
+
+            }
+            else if (e != questions.length - 1) {
+                var nextBtnDiv = document.createElement('div')
+                nextBtnDiv.setAttribute('class', 'next_btn_div')
+                var nextBtn = document.createElement('button')
+                nextBtn.setAttribute('class', 'next_question_btn')
+                var nextBtnText = document.createTextNode("Next")
+                nextBtn.setAttribute('onclick', 'nextQuestion()')
+                nextBtn.appendChild(nextBtnText)
+                nextBtnDiv.appendChild(nextBtn)
+                questionsDiv.appendChild(nextBtnDiv)
+
+            }
+
         }
 
         if (questions[e].options.length > 2) {
@@ -409,15 +416,30 @@ function renderQuestion(e) {
             questionsDiv.appendChild(option4Div)
 
 
-            var nextBtnDiv = document.createElement('div')
-            nextBtnDiv.setAttribute('class', 'next_btn_div')
-            var nextBtn = document.createElement('button')
-            nextBtn.setAttribute('class', 'next_question_btn')
-            var nextBtnText = document.createTextNode("Next")
-            nextBtn.setAttribute('onclick', 'nextQuestion()')
-            nextBtn.appendChild(nextBtnText)
-            nextBtnDiv.appendChild(nextBtn)
-            questionsDiv.appendChild(nextBtnDiv)
+            if (e === questions.length - 1) {
+                var nextBtnDiv = document.createElement('div')
+                nextBtnDiv.setAttribute('class', 'next_btn_div')
+                var nextBtn = document.createElement('button')
+                nextBtn.setAttribute('class', 'complete_btn')
+                var nextBtnText = document.createTextNode("Complete")
+                nextBtn.setAttribute('onclick', 'nextQuestion()')
+                nextBtn.appendChild(nextBtnText)
+                nextBtnDiv.appendChild(nextBtn)
+                questionsDiv.appendChild(nextBtnDiv)
+
+            }
+            else if (e != questions.length - 1) {
+                var nextBtnDiv = document.createElement('div')
+                nextBtnDiv.setAttribute('class', 'next_btn_div')
+                var nextBtn = document.createElement('button')
+                nextBtn.setAttribute('class', 'next_question_btn')
+                var nextBtnText = document.createTextNode("Next")
+                nextBtn.setAttribute('onclick', 'nextQuestion()')
+                nextBtn.appendChild(nextBtnText)
+                nextBtnDiv.appendChild(nextBtn)
+                questionsDiv.appendChild(nextBtnDiv)
+
+            }
         }
         var options = document.getElementsByClassName('options')
         var optionsNames = document.getElementsByClassName('optionsName')
@@ -454,7 +476,6 @@ function nextQuestion() {
                 renderQuestions.style.display = 'none'
 
                 clearInterval(interval)
-
 
 
 
@@ -765,16 +786,15 @@ function result() {
 
 function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
     for (var index = 0; index < rdBtns.length; index++) {
+        let notChecked = rdBtns[index]
         var rdBtn = rdBtns[index];
         rdBtn.checked = rdBtn.value === usersSelectedAnswers[currentQuestionIndex];
         rdBtn.disabled = true
 
 
 
-
-        if (rdBtn.checked != true) {
-            rdBtn.parentElement.parentElement.lastChild.innerHTML = "No option selected"
-            rdBtn.parentElement.parentElement.lastChild.className = "no_option_selected"
+        if (rdBtn.value === questions[currentQuestionIndex].correctAnswer) {
+            rdBtn.parentElement.style.backgroundColor = "lightgreen"
         }
 
         if (rdBtn.checked === true) {
@@ -782,6 +802,7 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
             if (rdBtn.value === questions[currentQuestionIndex].correctAnswer) {
                 rdBtn.parentElement.parentElement.lastChild.innerHTML = "Your answer is correct"
                 rdBtn.parentElement.parentElement.lastChild.className = "correct_answer"
+                rdBtn.parentElement.style.backgroundColor = "lightgreen"
 
             }
             else if (rdBtn.value !== questions[currentQuestionIndex].correctAnswer) {
@@ -791,16 +812,19 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
 
 
         }
-        if (rdBtn.value === questions[currentQuestionIndex].correctAnswer) {
-            rdBtn.parentElement.style.backgroundColor = "lightgreen"
+        if (rdBtns.checked === false) {
+            notChecked.parentElement.parentElement.lastChild.innerHTML = "No option selected"
+            // rdBtns.parentElement.parentElement.lastChild.className = "no_option_selected"
         }
+
+
     }
 }
 
 
 
-var minutes = 9;
-var seconds = 60;
+var minutes = 0;
+var seconds = 15;
 
 function time() {
     var getName = document.getElementById('name_field')
