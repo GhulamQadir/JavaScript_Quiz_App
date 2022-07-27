@@ -11,16 +11,16 @@ var questions = [
         correctAnswer: "script"
     },
 
-    {
-        question: "How to write an IF statement in JavaScript?",
-        options: [
-            "if(i==5)",
-            "if i = 5",
-            "if i = 5 then",
-            "if i == 5 then"
-        ],
-        correctAnswer: "if(i==5)"
-    },
+    // {
+    //     question: "How to write an IF statement in JavaScript?",
+    //     options: [
+    //         "if(i==5)",
+    //         "if i = 5",
+    //         "if i = 5 then",
+    //         "if i == 5 then"
+    //     ],
+    //     correctAnswer: "if(i==5)"
+    // },
 
     {
         question: "The external JavaScript file must contain the <script> tag.",
@@ -255,6 +255,17 @@ function showErrorModal() {
 
 
 
+function myFunction() {
+    document.getElementById('popup_div').style.display = "block"
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+
+    setTimeout(function () {
+        document.getElementById('popup_div').style.display = "none"
+    }, 2000)
+}
+
+
 
 
 function renderQuestion(e) {
@@ -311,17 +322,6 @@ function renderQuestion(e) {
             option2Div.appendChild(radioBtn2)
             option2Div.appendChild(option2)
             questionsDiv.appendChild(option2Div)
-
-
-            var nextBtnDiv = document.createElement('div')
-            nextBtnDiv.setAttribute('class', 'next_btn_div')
-            var nextBtn = document.createElement('button')
-            nextBtn.setAttribute('class', 'next_question_btn')
-            var nextBtnText = document.createTextNode("Next")
-            nextBtn.setAttribute('onclick', 'nextQuestion()')
-            nextBtn.appendChild(nextBtnText)
-            nextBtnDiv.appendChild(nextBtn)
-            questionsDiv.appendChild(nextBtnDiv)
 
 
 
@@ -478,7 +478,7 @@ function nextQuestion() {
                 clearInterval(interval)
 
 
-
+                myFunction()
                 result();
 
                 return;
@@ -812,19 +812,13 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
 
 
         }
-        if (rdBtns.checked === false) {
-            notChecked.parentElement.parentElement.lastChild.innerHTML = "No option selected"
-            // rdBtns.parentElement.parentElement.lastChild.className = "no_option_selected"
-        }
-
-
     }
 }
 
 
 
 var minutes = 0;
-var seconds = 15;
+var seconds = 10;
 
 function time() {
     var getName = document.getElementById('name_field')
