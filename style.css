@@ -1,7 +1,10 @@
+/* default bg color of body */
 body {
     background-color: #035efc;
 }
 
+
+/* starting/instruc div */
 #starting {
     display: none;
     margin: auto;
@@ -19,39 +22,13 @@ body {
     }
 }
 
-
-#render_questions {
-    width: 60%;
-    margin: auto;
-    background-color: white;
-    padding: 5px 5px 10px 10px;
-    display: none;
-    border-radius: 8px;
-}
-
-@media screen and (max-width: 800px) {
-    #render_questions {
-        width: 80%;
-
-    }
-}
-
-@media screen and (max-width: 550px) {
-    #render_questions {
-        width: 95%;
-    }
-}
-
-#img_div {
+/* JS logo div */
+#js_logo_div {
     display: inline-block;
     vertical-align: top;
 }
 
-#heading_div {
-    display: inline-block;
-    margin-top: 15px;
-}
-
+/* JS logo */
 #logo {
     height: 100px;
     margin: 10px;
@@ -59,10 +36,20 @@ body {
     vertical-align: top;
 }
 
+
+/* QUIZ heading div */
+#quiz_heading_div {
+    display: inline-block;
+    margin-top: 15px;
+}
+
+
+/* quiz heading */
 .quiz_heading {
     font-size: 26px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 
 .middle_heading {
     font-size: 23px;
@@ -70,6 +57,7 @@ body {
     font-weight: 500;
 }
 
+/* how many questions and time */
 .questions_and_time {
     margin: 5px;
     font-size: 17px;
@@ -77,29 +65,25 @@ body {
 
 }
 
+/* total number of questions and minutes */
 .minutes_and_questionsNumber {
     color: rgb(123, 123, 215);
     font-size: 17px;
 }
 
+/* quiz instructions heading */
 #instructions_heading {
     font-size: 23px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
 }
 
-.questions_div {
-    background-color: aliceblue;
-    border: 1px solid grey;
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-}
-
+/* each question marks */
 .marks {
     color: rgb(36, 36, 242);
 }
 
+/* name input field */
 #name_field {
     height: 31px;
     width: 200px;
@@ -108,12 +92,14 @@ body {
     margin-top: 10px;
 }
 
-#btn_div {
+/* start QUIZ button div */
+#start_quiz_btn_div {
     display: flex;
     justify-content: right;
     align-items: right;
 }
 
+/* start quiz button */
 #start_quiz_btn {
     height: 35px;
     width: 90px;
@@ -123,6 +109,7 @@ body {
     border: none;
 }
 
+/* NOTE heading */
 #note_heading {
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
@@ -131,6 +118,7 @@ body {
     margin-bottom: 10px;
 }
 
+/* note */
 .note {
     margin: 4px;
     font-size: 14px;
@@ -138,6 +126,127 @@ body {
     color: rgb(104, 103, 103);
 }
 
+/* STARTING DIV ENDS */
+
+
+
+
+
+
+/* render questions div */
+#render_questions_div {
+    width: 60%;
+    margin: auto;
+    background-color: white;
+    padding: 5px 5px 10px 10px;
+    display: none;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 800px) {
+    #render_questions_div {
+        width: 80%;
+
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #render_questions_div {
+        width: 95%;
+    }
+}
+
+
+/* TIME div */
+#time_div {
+    display: none;
+    align-items: right;
+    float: right;
+    padding: 5px 5px 115px 5px;
+}
+
+/* questions div */
+#questions_div {
+    padding-top: 20px;
+}
+
+
+/* question num */
+.question_num {
+    font-size: 20px;
+    font-family: sans-serif;
+    color: blue;
+}
+
+/* question */
+.question {
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+/* options div */
+.optionsDiv {
+    margin-bottom: 8px;
+}
+
+/* options name */
+.optionsName {
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+@media screen and (max-width: 500px) {
+    .optionsName {
+        font-size: 15px;
+
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .optionsName {
+        font-size: 14px;
+
+    }
+}
+
+
+/* next and complete button div */
+.next_btn_div,
+.complete_btn_div {
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+
+/* next question button */
+.next_question_btn {
+    height: 35px;
+    width: 70px;
+    font-size: 16;
+    padding: 5px;
+    background-color: #3774df;
+    color: white;
+    border: none;
+}
+
+/* complete button */
+.complete_btn {
+    height: 35px;
+    width: 85px;
+    font-size: 16;
+    padding: 5px;
+    background-color: #3774df;
+    color: white;
+    border: none;
+}
+
+/* RENDER QUESTION DIV END */
+
+
+
+
+
+/* ERRORS MODAL styling start */
 /* The Modal (background) */
 .modal {
     display: none;
@@ -155,7 +264,7 @@ body {
     /* Black w/ opacity */
 }
 
-/* Modal Content */
+/* ERRORS Modal Content */
 .modal-content {
     position: relative;
     background-color: #bf3b32;
@@ -203,13 +312,14 @@ body {
     }
 }
 
-#modal_error,
-#complete_message {
+/* error message styling */
+#modal_error {
     font-size: 17px;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* close modal button */
 .close_modal_btn {
     margin-right: 8px;
     font-size: 28px;
@@ -223,88 +333,17 @@ body {
     color: black;
 }
 
+/* ERRORS MODAL END */
 
 
-.question_num {
-    font-size: 20px;
-    font-family: sans-serif;
-    color: blue;
-}
-
-.question {
-    font-size: 18px;
-    font-family: sans-serif;
-}
-
-.optionsDiv {
-    margin-bottom: 8px;
-}
-
-.optionsName {
-    font-size: 18px;
-    font-family: sans-serif;
-}
-
-@media screen and (max-width: 500px) {
-    .optionsName {
-        font-size: 15px;
-
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .optionsName {
-        font-size: 14px;
-
-    }
-}
-
-.next_btn_div {
-    display: flex;
-    justify-content: right;
-    align-items: right;
-}
 
 
-#questions_div {
-    padding-top: 20px;
-}
-
-
-#time {
-    float: right;
-    padding: 5px 5px 115px 5px;
-}
-
-
-.next_question_btn {
-    height: 35px;
-    width: 70px;
-    font-size: 16;
-    padding: 5px;
-    background-color: #3774df;
-    color: white;
-    border: none;
-}
-
-.complete_btn {
-    height: 35px;
-    width: 85px;
-    font-size: 16;
-    padding: 5px;
-    background-color: #3774df;
-    color: white;
-    border: none;
-}
-
-
-#time {
+/* RESULT DIV start*/
+#result_div {
     display: none;
 }
 
-
-
-
+/* result progress div */
 #result_progress {
     width: 40%;
     margin: auto;
@@ -329,48 +368,54 @@ body {
     }
 }
 
+/* username */
 #user_name {
     margin: 0px;
     padding-bottom: 5px;
 }
 
+/* obtained marks */
 #obtained_marks {
     font-size: 17px !important;
     font-weight: 500 !important;
 }
 
+/* percentage para heading */
 #percentage {
     margin: 0px;
     padding-bottom: 5px;
 }
 
+/* percentage */
 #percent {
     font-size: 17px !important;
     font-weight: 500 !important;
 }
 
-
+/* remarks para heading */
 #result_remarks {
     margin: 0px;
     padding-bottom: 5px;
 }
 
+/* remarks */
 #remarks {
     font-size: 17px !important;
     font-weight: 500 !important;
 }
 
-
+/* time elapsed para heading */
 #time_elapsed {
     margin: 0px;
 }
 
+/* completion time */
 #completion_time {
     font-size: 17px !important;
     font-weight: 500 !important;
 }
 
-
+/* QUIZ result heading */
 #quiz_result_heading {
     font-size: 20px;
     font-weight: 600;
@@ -379,6 +424,7 @@ body {
     color: white
 }
 
+/* separate questions div */
 .separate_question_div {
     background-color: white;
     padding-top: 10px;
@@ -386,16 +432,36 @@ body {
     border-radius: 7px;
 }
 
-#result_div {
-    display: none;
+/* result question num */
+.result_question_num {
+    margin: 2px 2px 10px 10px;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 600;
+    color: blue;
 }
 
+/* result questions */
 .result_questions {
     font-size: 17px;
     font-family: sans-serif;
-    margin: 2px;
+    margin: 2px 2px 5px 10px;
 }
 
+/* RESULT OPTIONS DIV */
+.result_options_div {
+    padding: 10px 5px 10px 5px;
+}
+
+/* result options name */
+.optionsNameResult {
+    font-family: sans-serif;
+    padding-left: 3px;
+    padding-right: 5px;
+}
+
+
+/* wrong answer styling */
 .wrong_answer {
     background-color: #ffb3b3;
     color: white;
@@ -406,6 +472,7 @@ body {
     font-family: sans-serif;
 }
 
+/* correct answer styling */
 .correct_answer {
     background-color: lightgreen;
     color: white;
@@ -416,49 +483,9 @@ body {
     font-family: sans-serif;
 }
 
-.no_option_selected {
-    background-color: white;
-    color: black;
-    margin: 18px 0px 0px 0px;
-    padding: 10px 5px 10px 10px;
-    border-bottom-right-radius: 7px;
-    border-bottom-left-radius: 7px;
-    font-family: sans-serif;
-}
 
-.result_question_num {
-    margin: 2px 2px 10px 10px;
-    font-size: 18px;
-    font-family: sans-serif;
-    font-weight: 600;
-    color: blue;
-}
-
-.result_questions {
-    margin: 2px 2px 5px 10px;
-}
-
-.result_options_div {
-    padding: 10px 5px 10px 5px;
-}
-
-.optionsNameResult {
-    font-family: sans-serif;
-    padding-left: 3px;
-    padding-right: 5px;
-}
-
-/* #times_up_modal {
-    display: none;
-}
-
-#times_up_modal_content {
-    color: black;
-    background-color: white;
-} */
-
-
-/* questions complete popup */
+/* POPUPS STYLING START */
+/*  questions complete/time's up popup styling */
 #completed_popup,
 #times_up_popup {
     display: none;
@@ -533,3 +560,5 @@ body {
         opacity: 1;
     }
 }
+
+/* POPUPS STYLING END */
