@@ -230,10 +230,8 @@ var renderQuestions = document.getElementById('render_questions')
 var questionsDiv = document.getElementById('questions_div')
 var nameModal = document.getElementById("enter_name_modal");
 var optionModal = document.getElementById("select_option_modal");
-// var questionsCompletedModal = document.getElementById('quiz_complete_modal')
-// var timesUpModal = document.getElementById('times_up_modal')
-
-var quizCompletedMessage = document.getElementById('popup_div')
+var quizCompletedMessage = document.getElementById('completed_popup')
+var timesUpMessage = document.getElementById('times_up_popup')
 
 
 
@@ -257,9 +255,10 @@ function showErrorModal() {
     }
 }
 
+
 function quizCompletedPopUp() {
     quizCompletedMessage.style.display = "block"
-    var popup = document.getElementById("myPopup");
+    var popup = document.getElementById("completed_message");
     popup.classList.toggle("show");
 
     setTimeout(function () {
@@ -267,38 +266,15 @@ function quizCompletedPopUp() {
     }, 2000)
 }
 
+function timesUpPopup() {
+    timesUpMessage.style.display = "block"
+    var popup = document.getElementById("times_up_message");
+    popup.classList.toggle("show");
 
-// function quizCompleteModal() {
-//     questionsCompletedModal.style.display = "block"
-
-//     document.getElementById('modal_content').style.backgroundColor = "#ADD8E6"
-//     setTimeout(function () {
-//         questionsCompletedModal.style.display = "none"
-//     }, 1500)
-
-//     window.onclick = function (event) {
-//         if (event.target == nameModal || event.target == optionModal) {
-//             questionsCompletedModal.style.display = "none"
-//         }
-//     }
-// }
-
-
-// function showTimesUpModal() {
-//     timesUpModal.style.display = "block"
-
-//     setTimeout(function () {
-//         timesUpModal.style.display = "none"
-//     }, 1500)
-
-//     window.onclick = function (event) {
-//         if (event.target == nameModal || event.target == optionModal) {
-//             timesUpModal.style.display = "none"
-//         }
-//     }
-// }
-
-
+    setTimeout(function () {
+        timesUpMessage.style.display = "none"
+    }, 2000)
+}
 
 
 
@@ -891,8 +867,9 @@ function timer() {
         renderQuestions.innerHTML = ""
 
         renderQuestions.style.display = 'none'
-        // showTimesUpModal()
-        result()
+
+        timesUpPopup();
+        result();
     }
     if (minutes === 0) {
         getMinutes.innerHTML = `0${minutes}:`
