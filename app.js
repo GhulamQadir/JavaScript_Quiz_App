@@ -230,7 +230,11 @@ var renderQuestions = document.getElementById('render_questions')
 var questionsDiv = document.getElementById('questions_div')
 var nameModal = document.getElementById("enter_name_modal");
 var optionModal = document.getElementById("select_option_modal");
-var questionsCompletedModal = document.getElementById('questions_completed_modal')
+// var questionsCompletedModal = document.getElementById('quiz_complete_modal')
+// var timesUpModal = document.getElementById('times_up_modal')
+
+var quizCompletedMessage = document.getElementById('popup_div')
+
 
 
 // error modal
@@ -253,17 +257,48 @@ function showErrorModal() {
     }
 }
 
-
-
-function myFunction() {
-    document.getElementById('popup_div').style.display = "block"
+function quizCompletedPopUp() {
+    quizCompletedMessage.style.display = "block"
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
 
     setTimeout(function () {
-        document.getElementById('popup_div').style.display = "none"
+        quizCompletedMessage.style.display = "none"
     }, 2000)
 }
+
+
+// function quizCompleteModal() {
+//     questionsCompletedModal.style.display = "block"
+
+//     document.getElementById('modal_content').style.backgroundColor = "#ADD8E6"
+//     setTimeout(function () {
+//         questionsCompletedModal.style.display = "none"
+//     }, 1500)
+
+//     window.onclick = function (event) {
+//         if (event.target == nameModal || event.target == optionModal) {
+//             questionsCompletedModal.style.display = "none"
+//         }
+//     }
+// }
+
+
+// function showTimesUpModal() {
+//     timesUpModal.style.display = "block"
+
+//     setTimeout(function () {
+//         timesUpModal.style.display = "none"
+//     }, 1500)
+
+//     window.onclick = function (event) {
+//         if (event.target == nameModal || event.target == optionModal) {
+//             timesUpModal.style.display = "none"
+//         }
+//     }
+// }
+
+
 
 
 
@@ -478,7 +513,7 @@ function nextQuestion() {
                 clearInterval(interval)
 
 
-                myFunction()
+                quizCompletedPopUp()
                 result();
 
                 return;
@@ -786,17 +821,14 @@ function result() {
 
 function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
     for (var index = 0; index < rdBtns.length; index++) {
-        let notChecked = rdBtns[index]
         var rdBtn = rdBtns[index];
         rdBtn.checked = rdBtn.value === usersSelectedAnswers[currentQuestionIndex];
         rdBtn.disabled = true
 
 
-
         if (rdBtn.value === questions[currentQuestionIndex].correctAnswer) {
             rdBtn.parentElement.style.backgroundColor = "lightgreen"
         }
-
         if (rdBtn.checked === true) {
             rdBtn.parentElement.style.backgroundColor = "#ffb3b3"
             if (rdBtn.value === questions[currentQuestionIndex].correctAnswer) {
@@ -811,8 +843,10 @@ function checkCorrectAnswer(rdBtns, currentQuestionIndex) {
             }
 
 
+
         }
     }
+
 }
 
 
@@ -857,6 +891,7 @@ function timer() {
         renderQuestions.innerHTML = ""
 
         renderQuestions.style.display = 'none'
+        // showTimesUpModal()
         result()
     }
     if (minutes === 0) {
